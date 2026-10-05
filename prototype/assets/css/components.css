@@ -1606,6 +1606,28 @@ body:has(.winkel-vandaag) .topbar__inner {
   justify-content: flex-end;
 }
 
+.winkel-aanbod {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+.winkel-aanbod .strip-title {
+  margin-top: 0;
+}
+
+.page-hero--banner {
+  padding-bottom: var(--space-6);
+}
+
+.page-hero--banner .split-2 {
+  align-items: center;
+}
+
+.page-hero--banner .photo-card {
+  aspect-ratio: 16 / 10;
+}
+
 /* Op gsm en tablet wordt de foto een lage banner over de volle breedte, bovenaan. */
 @media (max-width: 62rem) {
   .page-hero--banner {
