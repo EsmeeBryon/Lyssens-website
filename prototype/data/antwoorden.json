@@ -253,7 +253,7 @@
 
   "paginas": [
     { "url": "index.html", "titel": "Home" },
-    { "url": "werken.html", "titel": "Wat wij doen" },
+    { "url": "werken.html", "titel": "Wat wij uitvoeren" },
     { "url": "winkel.html", "titel": "De winkel" },
     { "url": "realisaties.html", "titel": "Realisaties" },
     { "url": "over.html", "titel": "Over ons" },

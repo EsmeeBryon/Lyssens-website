@@ -359,7 +359,7 @@ class Vragenhulp {
       <button class="vraaghulp__knop" type="button" aria-expanded="false" aria-controls="vraaghulp-paneel">
         <span class="vraaghulp__knoptekst">Stel je vraag</span>
       </button>
-      <div class="vraaghulp__paneel" id="vraaghulp-paneel" role="dialog" aria-modal="false" aria-label="Stel je vraag" hidden>
+      <div class="vraaghulp__paneel" id="vraaghulp-paneel" role="dialog" aria-modal="false" aria-label="Stel je vraag" tabindex="-1" hidden>
         <div class="vraaghulp__kop">
           <p class="vraaghulp__titel">Waarmee kunnen we je helpen?</p>
           <button class="vraaghulp__sluit" type="button" aria-label="Sluit de vragenhulp">&times;</button>
@@ -413,7 +413,12 @@ class Vragenhulp {
     this.knop.setAttribute("aria-expanded", String(this.open));
     this.wrap.dataset.open = String(this.open);
     if (this.open) {
-      this.invoer.focus();
+      /* Op een gsm zou het toetsenbord meteen het halve scherm innemen. */
+      if (window.matchMedia("(pointer: fine)").matches) {
+        this.invoer.focus();
+      } else {
+        this.paneel.focus();
+      }
       this.laadIndex();
     } else {
       this.knop.focus();
