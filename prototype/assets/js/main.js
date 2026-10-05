@@ -190,6 +190,22 @@ function toonWinkelStatus() {
   doel.textContent = tekst;
 }
 
+/* Op een gsm wijkt de belbalk zolang dezelfde knoppen of het formulier al in beeld staan. */
+function initBelbalk() {
+  const balk = document.querySelector(".call-bar");
+  if (!balk || !("IntersectionObserver" in window)) return;
+
+  const doelen = document.querySelectorAll(".hero__actions, #offerte");
+  if (!doelen.length) return;
+
+  const inBeeld = new Set();
+  const kijker = new IntersectionObserver((items) => {
+    items.forEach((item) => (item.isIntersecting ? inBeeld.add(item.target) : inBeeld.delete(item.target)));
+    document.documentElement.toggleAttribute("data-belbalk-weg", inBeeld.size > 0);
+  });
+  doelen.forEach((doel) => kijker.observe(doel));
+}
+
 /* Wat iemand in de vragenhulp vertelde, staat al klaar in het offerteformulier. */
 function vulAanvraagIn() {
   let aanvraag = null;
@@ -217,3 +233,4 @@ initReveal();
 markToday();
 toonWinkelStatus();
 vulAanvraagIn();
+initBelbalk();

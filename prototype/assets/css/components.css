@@ -1722,6 +1722,16 @@
   min-height: 3rem;
 }
 
+[data-belbalk-weg] .call-bar {
+  transform: translateY(110%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .call-bar {
+    transition: transform 250ms ease;
+  }
+}
+
 @media (max-width: 45rem) {
   .call-bar {
     display: flex;
@@ -2015,6 +2025,10 @@
   .vraaghulp {
     right: var(--space-4);
     bottom: calc(4.5rem + var(--space-3));
+  }
+
+  [data-belbalk-weg] .vraaghulp {
+    bottom: var(--space-4);
   }
 
   .vraaghulp__paneel {
