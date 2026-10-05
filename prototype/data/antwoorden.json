@@ -1,0 +1,103 @@
+{
+  "_uitleg": "Pas dit bestand aan om de vragenhulp bij te leren. Elk antwoord krijgt trefwoorden. Staat een van die woorden in de vraag van de bezoeker, dan geeft de hulp dit antwoord. Vindt hij niets, dan zoekt hij zelf in de teksten van de website.",
+
+  "begroeting": "Stel gerust je vraag. Ik zoek het antwoord op deze website.",
+  "suggesties": [
+    "Wanneer is de winkel open?",
+    "Wat kost het om te laten schilderen?",
+    "Komen jullie ook in Schoten?",
+    "Hoeveel verf heb ik nodig?"
+  ],
+
+  "paginas": [
+    { "url": "index.html", "titel": "Home" },
+    { "url": "werken.html", "titel": "Wat wij doen" },
+    { "url": "winkel.html", "titel": "De winkel" },
+    { "url": "realisaties.html", "titel": "Realisaties" },
+    { "url": "over.html", "titel": "Over ons" },
+    { "url": "contact.html", "titel": "Contact" },
+    { "url": "promotie.html", "titel": "Promoties" },
+    { "url": "dienst-schilderwerken.html", "titel": "Schilderwerken" }
+  ],
+
+  "antwoorden": [
+    {
+      "trefwoorden": ["open", "openingsuur", "openingsuren", "uur", "uren", "wanneer", "gesloten", "dicht", "maandag", "zondag", "zaterdag", "afspraak"],
+      "antwoord": "De winkel is open van dinsdag tot vrijdag van 8.30 tot 12.00 en van 13.00 tot 18.00, en op zaterdag doorlopend van 9.00 tot 15.00. Maandag enkel op afspraak, zondag gesloten.",
+      "link": "winkel.html#openingsuren",
+      "linktekst": "Bekijk de openingsuren"
+    },
+    {
+      "trefwoorden": ["prijs", "prijzen", "kost", "kosten", "kostprijs", "offerte", "duur", "tarief", "budget", "raming"],
+      "antwoord": "Een prijs hangt af van de oppervlakte en de staat van de ondergrond. Daarom komen we eerst gratis langs om op te meten. Je krijgt een vaste prijs op voorhand, zonder kleine lettertjes.",
+      "link": "contact.html#offerte",
+      "linktekst": "Vraag je gratis offerte"
+    },
+    {
+      "trefwoorden": ["regio", "omgeving", "komen", "schoten", "brasschaat", "deurne", "ekeren", "antwerpen", "merksem", "ver", "afstand", "waar"],
+      "antwoord": "We werken in Merksem en de ruime regio Antwerpen, onder meer in Schoten, Brasschaat, Deurne en Ekeren. Woon je verder weg? Bel even, dan kijken we wat mogelijk is.",
+      "link": "contact.html",
+      "linktekst": "Neem contact op"
+    },
+    {
+      "trefwoorden": ["verf", "liter", "hoeveel", "berekenen", "mengen", "kleur", "kleuren", "tint", "sigma"],
+      "antwoord": "In de winkel mengen we meer dan 70.000 kleuren ter plaatse. Wil je weten hoeveel liter je nodig hebt, dan reken je dat zelf uit met onze rekenhulp.",
+      "link": "winkel.html#hoeveel-verf",
+      "linktekst": "Bereken hoeveel verf je nodig hebt"
+    },
+    {
+      "trefwoorden": ["behang", "behangen", "behangpapier", "plakken"],
+      "antwoord": "We behangen strak en zonder zichtbare naden, en je kiest uit een honderdtal behangboeken. Je kan het behang ook gewoon bij ons kopen en zelf plakken.",
+      "link": "werken.html#behangen",
+      "linktekst": "Meer over behangen"
+    },
+    {
+      "trefwoorden": ["vloer", "vloeren", "vloerbekleding", "laminaat", "vinyl", "tapijt", "parket", "tarkett"],
+      "antwoord": "We leveren en plaatsen laminaat, vinyl, tapijt en andere vloerbekleding. We komen eerst opmeten, zodat je weet wat het kost voor we beginnen.",
+      "link": "werken.html#vloerbekleding",
+      "linktekst": "Meer over vloerbekleding"
+    },
+    {
+      "trefwoorden": ["gordijn", "gordijnen", "raamdecoratie", "zonwering", "rolgordijn", "lamellen", "jaloezie", "atelier"],
+      "antwoord": "Gordijnen en zonwering maken we op maat in ons eigen atelier. We komen opmeten en plaatsen het ook zelf.",
+      "link": "werken.html#raamdecoratie",
+      "linktekst": "Meer over raamdecoratie"
+    },
+    {
+      "trefwoorden": ["droogkuis", "wasserij", "stomerij", "wassen", "kuisen"],
+      "antwoord": "Aan dezelfde toonbank kan je ook terecht voor droogkuis en wasserij. Handig als je toch in de winkel bent.",
+      "link": "winkel.html#droogkuis",
+      "linktekst": "Meer over droogkuis en wasserij"
+    },
+    {
+      "trefwoorden": ["zelf", "doe-het-zelf", "materiaal", "kopen", "winkel", "advies", "stalen"],
+      "antwoord": "Doe je het liever zelf? Dan verkopen we je exact dezelfde materialen die onze eigen schilders gebruiken. Advies krijg je er gratis bij, ook als je niets koopt.",
+      "link": "winkel.html",
+      "linktekst": "Bekijk het winkelaanbod"
+    },
+    {
+      "trefwoorden": ["parkeren", "parking", "auto", "route", "adres", "straat", "liggen", "vinden"],
+      "antwoord": "Je vindt ons in De Vlasschaardstraat 28 in 2170 Merksem. Parkeren kan voor de deur.",
+      "link": "winkel.html#openingsuren",
+      "linktekst": "Toon adres en openingsuren"
+    },
+    {
+      "trefwoorden": ["telefoon", "bellen", "nummer", "mail", "mailen", "contact", "bereiken"],
+      "antwoord": "Bellen mag altijd op 03 644 52 06. Mailen kan ook, naar lyssensdecoratie@skynet.be.",
+      "link": "contact.html",
+      "linktekst": "Naar de contactpagina"
+    },
+    {
+      "trefwoorden": ["promotie", "promoties", "korting", "actie", "gratis"],
+      "antwoord": "Woon je binnen 10 km rond Merksem, dan meten wij je ramen gratis op en plaatsen we je raamdecoratie zonder extra kosten. Er loopt ook een korting op gordijnstoffen.",
+      "link": "promotie.html",
+      "linktekst": "Bekijk alle promoties"
+    },
+    {
+      "trefwoorden": ["onderaannemer", "ploeg", "personeel", "wie", "patroon", "bart", "ervaring", "jaar", "sinds"],
+      "antwoord": "Onze eigen ploeg komt bij je thuis, geen wisselende onderaannemers. De zaak bestaat sinds 1974 en de patroon werkt zelf mee.",
+      "link": "over.html",
+      "linktekst": "Lees ons verhaal"
+    }
+  ]
+}

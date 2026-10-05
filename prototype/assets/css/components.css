@@ -1760,3 +1760,199 @@
     gap: var(--space-2);
   }
 }
+
+/* Vragenhulp rechtsonder */
+.vraaghulp {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+
+.vraaghulp__knop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1.3rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent-strong);
+  color: #fff;
+  font: inherit;
+  font-size: var(--step-s);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-m);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.vraaghulp__knop::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #8fd6a5;
+}
+
+.vraaghulp__knop:hover {
+  background: var(--accent-deep);
+  transform: translateY(-1px);
+}
+
+.vraaghulp[data-open="true"] .vraaghulp__knop {
+  display: none;
+}
+
+.vraaghulp__paneel {
+  width: min(23rem, calc(100vw - 2 * var(--space-5)));
+  max-height: min(32rem, calc(100vh - 8rem));
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-l);
+  overflow: hidden;
+}
+
+.vraaghulp__paneel[hidden] {
+  display: none;
+}
+
+.vraaghulp__kop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--accent-deep);
+  color: #fff;
+}
+
+.vraaghulp__titel {
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--step-s);
+}
+
+.vraaghulp__sluit {
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0 0.2rem;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.vraaghulp__sluit:hover {
+  opacity: 1;
+}
+
+.vraaghulp__gesprek {
+  flex: 1;
+  min-height: 7rem;
+  overflow-y: auto;
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.vraaghulp__bericht p {
+  margin: 0;
+  font-size: var(--step-s);
+  line-height: 1.5;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-s);
+}
+
+.vraaghulp__bericht--hulp p {
+  background: var(--paper-alt);
+  color: var(--ink);
+}
+
+.vraaghulp__bericht--jij {
+  align-self: flex-end;
+  max-width: 85%;
+}
+
+.vraaghulp__bericht--jij p {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.vraaghulp__bericht a {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding-left: 0.85rem;
+  font-size: var(--step-xs);
+  font-weight: 700;
+  color: var(--accent-strong);
+}
+
+.vraaghulp__suggesties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--space-5) var(--space-4);
+}
+
+.vraaghulp__suggesties[hidden] {
+  display: none;
+}
+
+.vraaghulp__suggesties button {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.75rem;
+  font: inherit;
+  font-size: var(--step-xs);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.vraaghulp__suggesties button:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.vraaghulp__balk {
+  display: flex;
+  gap: var(--space-2);
+  padding: 0 var(--space-5) var(--space-3);
+}
+
+.vraaghulp__balk input {
+  flex: 1;
+  min-width: 0;
+}
+
+.vraaghulp__voet {
+  margin: 0;
+  padding: 0 var(--space-5) var(--space-4);
+  font-size: var(--step-xs);
+  color: var(--ink-soft);
+}
+
+@media (max-width: 45rem) {
+  .vraaghulp {
+    right: var(--space-4);
+    bottom: calc(4.5rem + var(--space-3));
+  }
+
+  .vraaghulp__paneel {
+    width: calc(100vw - 2 * var(--space-4));
+    max-height: calc(100vh - 11rem);
+  }
+}
