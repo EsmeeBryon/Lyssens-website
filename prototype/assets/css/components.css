@@ -1578,6 +1578,54 @@
   max-width: 58ch;
 }
 
+.winkel-vandaag {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  width: fit-content;
+  margin-top: var(--space-5);
+  padding: 0.65rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  font-size: var(--step-s);
+  font-weight: 700;
+}
+
+.winkel-vandaag a {
+  color: var(--accent-strong);
+}
+
+/* Op de winkelpagina staat de status al in de banner, dus niet nog eens bovenaan. */
+body:has(.winkel-vandaag) .topbar__status {
+  display: none;
+}
+
+body:has(.winkel-vandaag) .topbar__inner {
+  justify-content: flex-end;
+}
+
+/* Op gsm en tablet wordt de foto een lage banner over de volle breedte, bovenaan. */
+@media (max-width: 62rem) {
+  .page-hero--banner {
+    padding-top: 0;
+  }
+
+  .page-hero--banner .split-2 {
+    gap: var(--space-5);
+  }
+
+  .page-hero--banner .photo-card {
+    order: -1;
+    aspect-ratio: auto;
+    height: 10rem;
+    margin-inline: -1.25rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
 .quote {
   margin: 0;
   padding: var(--space-7);

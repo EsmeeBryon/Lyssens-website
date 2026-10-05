@@ -179,15 +179,16 @@ function winkelStatus() {
 }
 
 function toonWinkelStatus() {
-  const blok = document.querySelector("[data-winkelstatus]");
-  if (!blok) return;
-
-  const doel = blok.querySelector("[data-winkelstatus-tekst]");
-  if (!doel) return;
+  const blokken = document.querySelectorAll("[data-winkelstatus]");
+  if (!blokken.length) return;
 
   const { status, tekst } = winkelStatus();
-  blok.dataset.winkelstatus = status;
-  doel.textContent = tekst;
+  blokken.forEach((blok) => {
+    const doel = blok.querySelector("[data-winkelstatus-tekst]");
+    if (!doel) return;
+    blok.dataset.winkelstatus = status;
+    doel.textContent = tekst;
+  });
 }
 
 /* Op een gsm wijkt de belbalk zolang dezelfde knoppen of het formulier al in beeld staan. */
