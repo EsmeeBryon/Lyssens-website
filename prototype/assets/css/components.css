@@ -1636,8 +1636,16 @@ body:has(.winkel-vandaag) .topbar__inner {
   aspect-ratio: 16 / 10;
 }
 
-/* Op gsm en tablet wordt de foto een lage banner over de volle breedte, bovenaan. */
-@media (max-width: 62rem) {
+/* Vanaf tabletbreedte blijft de foto rechts naast de tekst staan. */
+@media (min-width: 45.01rem) and (max-width: 62rem) {
+  .page-hero--banner .split-2 {
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* Op gsm wordt de foto een lage banner over de volle breedte, bovenaan. */
+@media (max-width: 45rem) {
   .page-hero--banner {
     padding-top: 0;
   }
@@ -1649,7 +1657,7 @@ body:has(.winkel-vandaag) .topbar__inner {
   .page-hero--banner .photo-card {
     order: -1;
     aspect-ratio: auto;
-    height: 10rem;
+    height: 8rem;
     margin-inline: -1.25rem;
     border-radius: 0;
     box-shadow: none;
@@ -2134,6 +2142,12 @@ body:has(.winkel-vandaag) .topbar__inner {
 }
 
 @media (max-width: 45rem) {
+  /* Op gsm enkel waar een blok de klasse vraaghulp-op-gsm heeft. In WordPress
+     zet je die klasse bij Geavanceerd op een blok van de pagina. */
+  body:not(:has(.vraaghulp-op-gsm)) .vraaghulp {
+    display: none;
+  }
+
   .vraaghulp {
     right: var(--space-4);
     bottom: calc(4.5rem + var(--space-3));
