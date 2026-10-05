@@ -1617,6 +1617,7 @@ body:has(.winkel-vandaag) .topbar__inner {
 }
 
 .page-hero--banner {
+  background: var(--paper);
   padding-bottom: var(--space-6);
 }
 
@@ -1647,21 +1648,13 @@ body:has(.winkel-vandaag) .topbar__inner {
     box-shadow: none;
   }
 
-  /* Op gsm komt de status van vandaag meteen onder de foto, voor de titel. */
-  .page-hero--banner .split-2 > div:first-child {
-    display: flex;
-    flex-direction: column;
-  }
-
   .winkel-vandaag {
-    order: -1;
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: start;
     column-gap: 0.6rem;
     row-gap: 0.1rem;
     width: 100%;
-    margin: 0 0 var(--space-5);
   }
 
   .winkel-vandaag .topbar__dot {
