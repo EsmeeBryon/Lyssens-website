@@ -71,7 +71,7 @@
       "id": "behang",
       "naam": "Behang",
       "offerte": "behangen",
-      "herken": ["behang", "behangen", "behangpapier", "fotobehang", "accentmuur", "motief", "motieven", "patroon"],
+      "herken": ["behang", "behangen", "behangpapier", "fotobehang", "accentmuur", "motief", "motieven", "dessin"],
       "laten": {
         "antwoord": "We behangen strak en zonder zichtbare naden. Je kiest uit onze collectie behangboeken, in de winkel of samen met ons.",
         "link": "werken.html#behangen",
