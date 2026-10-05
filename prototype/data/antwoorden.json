@@ -1,26 +1,206 @@
 {
-  "_uitleg": "Pas dit bestand aan om de vragenhulp bij te leren. Elk antwoord krijgt trefwoorden. Staat een van die woorden in de vraag van de bezoeker, dan geeft de hulp dit antwoord. Vindt hij niets, dan zoekt hij zelf in de teksten van de website.",
+  "_uitleg": "Hier leer je de vragenhulp bij. 'onderwerpen' zijn de dingen die de zaak doet of verkoopt. Bij 'herken' zet je de woorden die mensen gebruiken als ze erover vertellen, ook gewone woorden zoals 'te veel zon'. Een onderwerp kan een antwoord hebben voor wie het 'zelf' doet en voor wie het wil 'laten' doen. Heeft het beide en is niet duidelijk wat de bezoeker wil, dan vraagt de hulp het. 'vragen' zijn korte praktische vragen zoals openingsuren. Vindt de hulp niets, dan zoekt hij in de teksten van de website.",
 
-  "begroeting": "Stel gerust je vraag. Ik zoek het antwoord op deze website.",
+  "begroeting": "Vertel gerust wat je van plan bent of stel je vraag. Hoe meer je vertelt, hoe beter ik je op weg help.",
   "suggesties": [
-    "Wanneer is de winkel open?",
-    "Wat kost het om te laten schilderen?",
-    "Komen jullie ook in Schoten?",
-    "Hoeveel verf heb ik nodig?"
+    "Ik wil mijn living een frisse kleur geven",
+    "We hebben net een appartement gekocht",
+    "Er komt te veel zon binnen in de slaapkamer",
+    "Wanneer is de winkel open?"
   ],
 
-  "paginas": [
-    { "url": "index.html", "titel": "Home" },
-    { "url": "werken.html", "titel": "Wat wij doen" },
-    { "url": "winkel.html", "titel": "De winkel" },
-    { "url": "realisaties.html", "titel": "Realisaties" },
-    { "url": "over.html", "titel": "Over ons" },
-    { "url": "contact.html", "titel": "Contact" },
-    { "url": "promotie.html", "titel": "Promoties" },
-    { "url": "dienst-schilderwerken.html", "titel": "Schilderwerken" }
+  "teksten": {
+    "keuzevraag": "Wil je het zelf doen, of mogen wij het voor je doen?",
+    "keuzeZelf": "Ik doe het zelf",
+    "keuzeLaten": "Laat het jullie doen",
+    "meerLaten": "Dat kunnen we allemaal voor je doen, met onze eigen ploeg en in één offerte.",
+    "meerZelf": "Daarvoor kan je allemaal bij ons in de winkel terecht, met gratis advies erbij.",
+    "offerteknop": "Vraag hierover een gratis offerte",
+    "adviesExtra": "Twijfel je nog over kleur of stijl? Advies krijg je er gratis bij, en stalen mag je mee naar huis nemen.",
+    "wachten": "Even kijken...",
+    "teKort": "Vertel gerust wat meer, bijvoorbeeld welke ruimte het is en wat je graag zou willen.",
+    "nietsGevonden": "Daar vind ik niets over op de site. Bel gerust 03 644 52 06 of mail naar lyssensdecoratie@skynet.be, dan helpen we je verder."
+  },
+
+  "zelfWoorden": ["zelf", "zelve", "kopen", "koop", "verkopen", "verkoopt", "komen halen", "ophalen", "materiaal", "doe het zelf"],
+  "latenWoorden": ["laten", "laat", "uitvoeren", "plaatsen", "plaatsing", "offerte", "vakman", "iemand", "schilder", "schilders", "kunnen jullie", "doen jullie", "komen jullie", "willen jullie", "zouden jullie", "jullie doen", "geschilderd worden", "moet geschilderd", "moeten geschilderd"],
+
+  "ruimtes": ["living", "woonkamer", "salon", "slaapkamer", "kinderkamer", "babykamer", "keuken", "badkamer", "hal", "inkom", "gang", "trappenhal", "zolder", "bureau", "veranda", "gevel", "appartement", "huis"],
+
+  "onderwerpen": [
+    {
+      "id": "totaalproject",
+      "naam": "Totaalproject",
+      "voorrang": true,
+      "offerte": "totaalproject",
+      "herken": ["verhuis", "verhuizen", "verhuisd", "verhuizing", "renovatie", "renoveren", "verbouwen", "verbouwing", "opknappen", "opknapper", "nieuwbouw", "totaalproject", "nieuw huis", "nieuwe woning", "nieuw appartement", "huis gekocht", "appartement gekocht", "woning gekocht", "van a tot z", "alles laten doen", "alles opnieuw"],
+      "laten": {
+        "antwoord": "Dan ben je bij ons aan het juiste adres. We nemen alles op ons: schilderen, behangen, vloeren en raamdecoratie, met één aanspreekpunt en één offerte. Zo hoef je zelf niets te coördineren.",
+        "link": "werken.html#totaalproject",
+        "linktekst": "Meer over totaalprojecten"
+      }
+    },
+    {
+      "id": "advies",
+      "naam": "Kleur- en interieuradvies",
+      "voorrang": true,
+      "herken": ["advies", "raad", "twijfel", "twijfelen", "twijfelt", "inspiratie", "idee", "ideeen", "sfeer", "gezellig", "gezelliger", "moderner", "rustiger", "somber", "combineren", "combinatie", "stijl", "welke kleur", "kleur kiezen", "weet niet", "geen idee"],
+      "laten": {
+        "antwoord": "Twijfelen hoeft niet. We geven je gratis advies over kleur, behang, raamdecoratie en vloeren, in de winkel of tijdens een gratis plaatsbezoek. Stalen neem je gerust mee naar huis, zodat je ze in je eigen licht kan bekijken.",
+        "link": "werken.html#interieuradvies",
+        "linktekst": "Meer over interieuradvies"
+      }
+    },
+    {
+      "id": "schilderwerk",
+      "naam": "Schilderwerk",
+      "offerte": "schilderwerken",
+      "herken": ["schilder", "schilderen", "schilderwerk", "schilderwerken", "verf", "verven", "muur", "muren", "plafond", "plafonds", "gevel", "gevels", "buitenschilderwerk", "houtwerk", "lakken", "deur", "deuren", "opfrissen", "opgefrist", "frisse", "fris", "vergeeld", "afgebladderd", "bladdert", "barsten", "scheurtjes", "plamuren", "kleur", "kleuren", "donker", "lichter", "ramen schilderen", "raamkaders", "nieuwe kleur", "andere kleur"],
+      "laten": {
+        "antwoord": "Schilderen is ons vak, binnen en buiten. We komen eerst gratis langs om te kijken en op te meten. Daarna krijg je een vaste prijs op voorhand, en onze eigen ploeg voert het uit met kwaliteitsverf.",
+        "link": "dienst-schilderwerken.html",
+        "linktekst": "Meer over onze schilderwerken"
+      },
+      "zelf": {
+        "antwoord": "Dan vind je alles bij ons in de winkel: verf in meer dan 70.000 kleuren, gemengd terwijl je wacht, en al het materiaal zoals plamuur, borstels en afplaktape. Advies over de voorbereiding krijg je er gratis bij.",
+        "link": "winkel.html#verf",
+        "linktekst": "Verf en schildersmateriaal"
+      }
+    },
+    {
+      "id": "behang",
+      "naam": "Behang",
+      "offerte": "behangen",
+      "herken": ["behang", "behangen", "behangpapier", "fotobehang", "accentmuur", "motief", "motieven", "patroon"],
+      "laten": {
+        "antwoord": "We behangen strak en zonder zichtbare naden. Je kiest uit onze collectie behangboeken, in de winkel of samen met ons.",
+        "link": "werken.html#behangen",
+        "linktekst": "Meer over behangen"
+      },
+      "zelf": {
+        "antwoord": "Behang kan je gewoon bij ons kopen. Je bladert in de winkel door de behangboeken en neemt gerust stalen mee naar huis.",
+        "link": "winkel.html#behang",
+        "linktekst": "Behang in de winkel"
+      }
+    },
+    {
+      "id": "vloer",
+      "naam": "Vloeren",
+      "offerte": "vloer",
+      "herken": ["vloer", "vloeren", "vloerbekleding", "laminaat", "vinyl", "pvc", "tapijt", "parket", "plinten", "ondervloer"],
+      "laten": {
+        "antwoord": "We leveren en plaatsen laminaat, vinyl, tapijt en andere vloerbekleding. Eerst komen we opmeten, zodat je op voorhand weet wat het kost.",
+        "link": "werken.html#vloerbekleding",
+        "linktekst": "Meer over vloerbekleding"
+      },
+      "zelf": {
+        "antwoord": "In de winkel vind je vloerbekleding en stalen om mee te nemen. We denken graag mee over wat het best past bij je ruimte.",
+        "link": "winkel.html#vloerbekleding",
+        "linktekst": "Vloeren in de winkel"
+      }
+    },
+    {
+      "id": "raamdecoratie",
+      "naam": "Raamdecoratie",
+      "offerte": "raamdecoratie",
+      "herken": ["gordijn", "gordijnen", "overgordijnen", "vitrage", "zonwering", "rolgordijn", "rolgordijnen", "lamellen", "jaloezie", "jaloezieen", "plisse", "inkijk", "privacy", "verduisteren", "verduisterend", "zon", "zonlicht", "raam", "ramen", "raamdecoratie", "gordijnstof", "gordijnstoffen", "te veel zon", "te warm", "zon binnen", "inkijken"],
+      "laten": {
+        "antwoord": "Gordijnen en zonwering maken we op maat in ons eigen atelier. We komen opmeten en plaatsen alles zelf. Woon je binnen 10 km rond Merksem, dan zijn opmeten en plaatsen nu gratis.",
+        "link": "werken.html#raamdecoratie",
+        "linktekst": "Meer over raamdecoratie"
+      },
+      "zelf": {
+        "antwoord": "In de winkel vind je raamdecoratie en gordijnstoffen. Op dit moment loopt er een korting op gordijnstoffen.",
+        "link": "winkel.html#raamdecoratie",
+        "linktekst": "Raamdecoratie in de winkel"
+      }
+    },
+    {
+      "id": "spuiten",
+      "naam": "Spuitwerk voor meubels en kasten",
+      "offerte": "andere",
+      "herken": ["spuiten", "spuitwerk", "spuittechniek", "spuittechnieken", "meubel", "meubels", "kast", "keukenkast", "keukenkasten", "kastdeuren", "radiator", "radiatoren", "trap", "trapleuning", "gedateerd"],
+      "laten": {
+        "antwoord": "Meubels, kasten en zelfs muren kunnen we spuiten. Zo krijg je een gladde afwerking zonder borstelstreken, en geef je iets een nieuw leven zonder het te vervangen.",
+        "link": "werken.html#spuittechnieken",
+        "linktekst": "Meer over spuitwerk"
+      }
+    },
+    {
+      "id": "luchtgommen",
+      "naam": "Luchtgommen",
+      "offerte": "andere",
+      "herken": ["luchtgommen", "luchtgom", "zandstralen", "stralen", "gommen", "afbijten", "afkrabben", "oude verf", "verf verwijderen", "verf eraf", "verf eraf halen"],
+      "laten": {
+        "antwoord": "Oude verf of vuil verwijderen doen we met luchtgommen, de duurzamere versie van zandstralen.",
+        "link": "werken.html#luchtgommen",
+        "linktekst": "Meer over luchtgommen"
+      }
+    },
+    {
+      "id": "kroonlijsten",
+      "naam": "Kroonlijsten",
+      "offerte": "andere",
+      "herken": ["kroonlijst", "kroonlijsten", "lijstwerk", "sierlijst", "sierlijsten", "orac", "plafondlijst", "plafondlijsten", "rozet"],
+      "laten": {
+        "antwoord": "Onze plaatsers zijn gespecialiseerd in ORAC-kroonlijsten. Ze helpen je kiezen en werken alles strak af.",
+        "link": "werken.html#kroonlijsten",
+        "linktekst": "Meer over kroonlijsten"
+      }
+    },
+    {
+      "id": "tapijtreiniger",
+      "naam": "Tapijtreiniger huren",
+      "herken": ["tapijtreiniger", "huren", "vlek", "vlekken", "dieptereiniging", "tapijt reinigen", "tapijt kuisen", "tapijt proper"],
+      "zelf": {
+        "antwoord": "Een tapijtreiniger kan je bij ons huren. Je neemt de machine mee naar huis en reinigt je tapijt zelf tot diep in de vezels.",
+        "link": "winkel.html#tapijtreiniger",
+        "linktekst": "Meer over de tapijtreiniger"
+      }
+    },
+    {
+      "id": "droogkuis",
+      "naam": "Droogkuis en wasserij",
+      "herken": ["droogkuis", "stomerij", "wasserij", "kostuum", "maatpak", "trouwkleed", "trouwjurk", "hemden", "hemd", "dekbed", "kleren", "kledij"],
+      "zelf": {
+        "antwoord": "Voor droogkuis en wasserij kan je aan dezelfde toonbank terecht. Je brengt het gewoon binnen tijdens de openingsuren.",
+        "link": "winkel.html#droogkuis",
+        "linktekst": "Meer over droogkuis en wasserij"
+      }
+    },
+    {
+      "id": "beslag",
+      "naam": "Deur- en meubelbeslag",
+      "herken": ["beslag", "deurbeslag", "meubelbeslag", "klink", "klinken", "deurklink", "deurklinken", "handgreep", "handgrepen", "greep", "grepen", "knop", "knoppen", "scharnier", "scharnieren", "dauby"],
+      "zelf": {
+        "antwoord": "Deur- en meubelbeslag, zoals klinken en grepen, vind je in de winkel. We werken onder meer met Dauby.",
+        "link": "winkel.html#beslag",
+        "linktekst": "Meer over beslag"
+      }
+    },
+    {
+      "id": "kuisproducten",
+      "naam": "Kuis- en drogisterijproducten",
+      "herken": ["kuisproduct", "kuisproducten", "kuisen", "poetsen", "poetsmiddel", "schoonmaak", "schoonmaken", "onderhoudsproduct", "onderhoudsproducten", "drogisterij", "detergent"],
+      "zelf": {
+        "antwoord": "In de winkel vind je een groot assortiment kuis- en onderhoudsproducten. Vraag gerust welk product het best past.",
+        "link": "winkel.html#kuisproducten",
+        "linktekst": "Meer over kuisproducten"
+      }
+    },
+    {
+      "id": "accessoires",
+      "naam": "Woonaccessoires",
+      "herken": ["accessoire", "accessoires", "woonaccessoires", "kussen", "kussens", "plaid", "kaars", "kaarsen", "decoratie", "cadeau", "geschenk", "vaas"],
+      "zelf": {
+        "antwoord": "Voor woonaccessoires kan je in de winkel gerust rondneuzen.",
+        "link": "winkel.html#accessoires",
+        "linktekst": "Meer over accessoires"
+      }
+    }
   ],
 
-  "antwoorden": [
+  "vragen": [
     {
       "trefwoorden": ["open", "openingsuur", "openingsuren", "uur", "uren", "wanneer", "gesloten", "dicht", "maandag", "zondag", "zaterdag", "afspraak"],
       "antwoord": "De winkel is open van dinsdag tot vrijdag van 8.30 tot 12.00 en van 13.00 tot 18.00, en op zaterdag doorlopend van 9.00 tot 15.00. Maandag enkel op afspraak, zondag gesloten.",
@@ -28,55 +208,25 @@
       "linktekst": "Bekijk de openingsuren"
     },
     {
-      "trefwoorden": ["prijs", "prijzen", "kost", "kosten", "kostprijs", "offerte", "duur", "tarief", "budget", "raming"],
+      "trefwoorden": ["prijs", "prijzen", "kost", "kosten", "kostprijs", "duur", "tarief", "budget", "raming"],
       "antwoord": "Een prijs hangt af van de oppervlakte en de staat van de ondergrond. Daarom komen we eerst gratis langs om op te meten. Je krijgt een vaste prijs op voorhand, zonder kleine lettertjes.",
       "link": "contact.html#offerte",
       "linktekst": "Vraag je gratis offerte"
     },
     {
-      "trefwoorden": ["regio", "omgeving", "komen", "schoten", "brasschaat", "deurne", "ekeren", "antwerpen", "merksem", "ver", "afstand", "waar"],
+      "trefwoorden": ["regio", "omgeving", "schoten", "brasschaat", "deurne", "ekeren", "antwerpen", "merksem", "afstand"],
       "antwoord": "We werken in Merksem en de ruime regio Antwerpen, onder meer in Schoten, Brasschaat, Deurne en Ekeren. Woon je verder weg? Bel even, dan kijken we wat mogelijk is.",
       "link": "contact.html",
       "linktekst": "Neem contact op"
     },
     {
-      "trefwoorden": ["verf", "liter", "hoeveel", "berekenen", "mengen", "kleur", "kleuren", "tint", "sigma"],
-      "antwoord": "In de winkel mengen we meer dan 70.000 kleuren ter plaatse. Wil je weten hoeveel liter je nodig hebt, dan reken je dat zelf uit met onze rekenhulp.",
+      "trefwoorden": ["liter", "rekenhulp", "berekenen", "hoeveel verf", "verf nodig"],
+      "antwoord": "Hoeveel verf je nodig hebt, reken je zelf uit met onze rekenhulp. Vul de afmetingen van je kamer in en je ziet meteen hoeveel liter.",
       "link": "winkel.html#hoeveel-verf",
       "linktekst": "Bereken hoeveel verf je nodig hebt"
     },
     {
-      "trefwoorden": ["behang", "behangen", "behangpapier", "plakken"],
-      "antwoord": "We behangen strak en zonder zichtbare naden, en je kiest uit een honderdtal behangboeken. Je kan het behang ook gewoon bij ons kopen en zelf plakken.",
-      "link": "werken.html#behangen",
-      "linktekst": "Meer over behangen"
-    },
-    {
-      "trefwoorden": ["vloer", "vloeren", "vloerbekleding", "laminaat", "vinyl", "tapijt", "parket", "tarkett"],
-      "antwoord": "We leveren en plaatsen laminaat, vinyl, tapijt en andere vloerbekleding. We komen eerst opmeten, zodat je weet wat het kost voor we beginnen.",
-      "link": "werken.html#vloerbekleding",
-      "linktekst": "Meer over vloerbekleding"
-    },
-    {
-      "trefwoorden": ["gordijn", "gordijnen", "raamdecoratie", "zonwering", "rolgordijn", "lamellen", "jaloezie", "atelier"],
-      "antwoord": "Gordijnen en zonwering maken we op maat in ons eigen atelier. We komen opmeten en plaatsen het ook zelf.",
-      "link": "werken.html#raamdecoratie",
-      "linktekst": "Meer over raamdecoratie"
-    },
-    {
-      "trefwoorden": ["droogkuis", "wasserij", "stomerij", "wassen", "kuisen"],
-      "antwoord": "Aan dezelfde toonbank kan je ook terecht voor droogkuis en wasserij. Handig als je toch in de winkel bent.",
-      "link": "winkel.html#droogkuis",
-      "linktekst": "Meer over droogkuis en wasserij"
-    },
-    {
-      "trefwoorden": ["zelf", "doe-het-zelf", "materiaal", "kopen", "winkel", "advies", "stalen"],
-      "antwoord": "Doe je het liever zelf? Dan verkopen we je exact dezelfde materialen die onze eigen schilders gebruiken. Advies krijg je er gratis bij, ook als je niets koopt.",
-      "link": "winkel.html",
-      "linktekst": "Bekijk het winkelaanbod"
-    },
-    {
-      "trefwoorden": ["parkeren", "parking", "auto", "route", "adres", "straat", "liggen", "vinden"],
+      "trefwoorden": ["parkeren", "parking", "route", "adres", "straat", "liggen", "vinden"],
       "antwoord": "Je vindt ons in De Vlasschaardstraat 28 in 2170 Merksem. Parkeren kan voor de deur.",
       "link": "winkel.html#openingsuren",
       "linktekst": "Toon adres en openingsuren"
@@ -94,10 +244,21 @@
       "linktekst": "Bekijk alle promoties"
     },
     {
-      "trefwoorden": ["onderaannemer", "ploeg", "personeel", "wie", "patroon", "bart", "ervaring", "jaar", "sinds"],
+      "trefwoorden": ["onderaannemer", "onderaannemers", "ploeg", "personeel", "patroon", "bart", "ervaring", "sinds"],
       "antwoord": "Onze eigen ploeg komt bij je thuis, geen wisselende onderaannemers. De zaak bestaat sinds 1974 en de patroon werkt zelf mee.",
       "link": "over.html",
       "linktekst": "Lees ons verhaal"
     }
+  ],
+
+  "paginas": [
+    { "url": "index.html", "titel": "Home" },
+    { "url": "werken.html", "titel": "Wat wij doen" },
+    { "url": "winkel.html", "titel": "De winkel" },
+    { "url": "realisaties.html", "titel": "Realisaties" },
+    { "url": "over.html", "titel": "Over ons" },
+    { "url": "contact.html", "titel": "Contact" },
+    { "url": "promotie.html", "titel": "Promoties" },
+    { "url": "dienst-schilderwerken.html", "titel": "Schilderwerken" }
   ]
 }

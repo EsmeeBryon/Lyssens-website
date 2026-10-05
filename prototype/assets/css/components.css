@@ -1865,15 +1865,37 @@
   gap: var(--space-3);
 }
 
-.vraaghulp__bericht p {
-  margin: 0;
-  font-size: var(--step-s);
-  line-height: 1.5;
+.vraaghulp__ballon {
   padding: 0.6rem 0.85rem;
   border-radius: var(--radius-s);
+  font-size: var(--step-s);
+  line-height: 1.5;
 }
 
-.vraaghulp__bericht--hulp p {
+.vraaghulp__ballon p {
+  margin: 0;
+}
+
+.vraaghulp__ballon p + p,
+.vraaghulp__ballon ul + p {
+  margin-top: 0.5rem;
+}
+
+.vraaghulp__ballon ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.vraaghulp__ballon li + li {
+  margin-top: 0.15rem;
+}
+
+.vraaghulp__ballon a {
+  font-weight: 700;
+  color: var(--accent-strong);
+}
+
+.vraaghulp__bericht--hulp .vraaghulp__ballon {
   background: var(--paper-alt);
   color: var(--ink);
 }
@@ -1883,19 +1905,50 @@
   max-width: 85%;
 }
 
-.vraaghulp__bericht--jij p {
+.vraaghulp__bericht--jij .vraaghulp__ballon {
   background: var(--accent-soft);
   color: var(--accent-deep);
   font-weight: 600;
 }
 
-.vraaghulp__bericht a {
+.vraaghulp__link {
   display: inline-block;
   margin-top: 0.4rem;
   padding-left: 0.85rem;
   font-size: var(--step-xs);
   font-weight: 700;
   color: var(--accent-strong);
+}
+
+.vraaghulp__offerte {
+  display: flex;
+  width: fit-content;
+  min-height: 2.5rem;
+  margin-top: 0.6rem;
+  font-size: var(--step-xs);
+}
+
+.vraaghulp__keuzes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: 0.6rem;
+}
+
+.vraaghulp__keuzes button {
+  border: 1px solid var(--accent);
+  background: var(--surface);
+  color: var(--accent-strong);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 0.9rem;
+  font: inherit;
+  font-size: var(--step-xs);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.vraaghulp__keuzes button:hover {
+  background: var(--accent-soft);
 }
 
 .vraaghulp__suggesties {

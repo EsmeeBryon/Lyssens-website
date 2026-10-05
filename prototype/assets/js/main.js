@@ -190,9 +190,30 @@ function toonWinkelStatus() {
   doel.textContent = tekst;
 }
 
+/* Wat iemand in de vragenhulp vertelde, staat al klaar in het offerteformulier. */
+function vulAanvraagIn() {
+  let aanvraag = null;
+  try {
+    aanvraag = JSON.parse(sessionStorage.getItem("lyssens-aanvraag"));
+    sessionStorage.removeItem("lyssens-aanvraag");
+  } catch (e) {
+    return;
+  }
+  if (!aanvraag) return;
+
+  const bericht = document.querySelector("#bericht");
+  if (bericht && !bericht.value && typeof aanvraag.bericht === "string") {
+    bericht.value = aanvraag.bericht.slice(0, 500);
+  }
+
+  const keuze = document.querySelector(`input[name="onderwerp"][value="${CSS.escape(String(aanvraag.onderwerp))}"]`);
+  if (keuze) keuze.checked = true;
+}
+
 initNav();
 initCalculator();
 initDemoForms();
 initReveal();
 markToday();
 toonWinkelStatus();
+vulAanvraagIn();
