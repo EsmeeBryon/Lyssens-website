@@ -1618,6 +1618,13 @@ body:has(.winkel-vandaag) .topbar__inner {
   text-align: center;
 }
 
+@media (min-width: 45.01rem) {
+  .winkel-aanbod {
+    margin-top: var(--space-8);
+    padding-top: var(--space-7);
+  }
+}
+
 .page-hero--banner {
   background: var(--paper);
   padding-bottom: var(--space-4);
