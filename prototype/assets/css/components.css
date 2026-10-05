@@ -1612,8 +1612,10 @@ body:has(.winkel-vandaag) .topbar__inner {
   border-top: 1px solid var(--line);
 }
 
-.winkel-aanbod .strip-title {
+.winkel-aanbod h2 {
   margin-top: 0;
+  margin-bottom: var(--space-5);
+  text-align: center;
 }
 
 .page-hero--banner {
