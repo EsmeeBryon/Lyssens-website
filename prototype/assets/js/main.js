@@ -153,7 +153,7 @@ function winkelStatus() {
   const vandaag = OPENINGSUREN[nu.dag];
 
   if (vandaag === "afspraak") {
-    return { status: "afspraak", tekst: "Onze winkel is vandaag enkel open op afspraak" };
+    return { status: "gesloten", tekst: "Onze winkel is vandaag gesloten, enkel op afspraak" };
   }
 
   if (Array.isArray(vandaag)) {
