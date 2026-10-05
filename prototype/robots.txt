@@ -1,0 +1,4 @@
+# Dit is nog een voorbeeldversie. Zoekmachines blijven er voorlopig af.
+# Zodra de site echt live gaat, wordt dit bestand aangepast.
+User-agent: *
+Disallow: /
