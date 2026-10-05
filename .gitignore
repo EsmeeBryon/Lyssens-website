@@ -1,0 +1,9 @@
+# Tijdelijke bestanden van de schermopname
+video/cards/
+video/frames/
+video/sheet.jpg
+
+# Systeembestanden
+Thumbs.db
+desktop.ini
+.DS_Store

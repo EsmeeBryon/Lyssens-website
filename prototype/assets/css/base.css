@@ -1,0 +1,318 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.12;
+  margin: 0 0 var(--space-4);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--step-4);
+}
+
+h2 {
+  font-size: var(--step-3);
+}
+
+h3 {
+  font-size: var(--step-1);
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: var(--accent-strong);
+}
+
+ul {
+  padding-left: 1.1em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--highlight);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 100;
+  background: var(--ink);
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+.container {
+  width: min(100% - 2.5rem, var(--container));
+  margin-inline: auto;
+}
+
+.container--narrow {
+  width: min(100% - 2.5rem, var(--container-narrow));
+}
+
+.section {
+  padding-block: var(--space-9);
+}
+
+/* Houdt de titel vrij van het vastgezette menu bij het springen naar een anker. */
+[id] {
+  scroll-margin-top: 7rem;
+}
+
+.section--tight {
+  padding-block: var(--space-7);
+}
+
+.section--alt {
+  background: var(--paper-alt);
+}
+
+.section--ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.section--ink h2,
+.section--ink h3 {
+  color: #fff;
+}
+
+.section__head {
+  max-width: 46rem;
+  margin-bottom: var(--space-7);
+}
+
+.section__head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--step-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  margin-bottom: var(--space-3);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+
+.section--ink .eyebrow {
+  color: var(--accent-soft);
+}
+
+.lead {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.section--ink .lead {
+  color: #e8e2db;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 2.9rem;
+  padding: 0.6rem 1.4rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: var(--step-s);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), color var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primary {
+  background: var(--accent-strong);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--ink);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn--light {
+  background: #fff;
+  color: var(--ink);
+}
+
+.btn--large {
+  min-height: 3.25rem;
+  font-size: var(--step-0);
+  padding-inline: 1.9rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn__icon {
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+.link-arrow:hover {
+  gap: var(--space-4);
+}
+
+/* Alleen verbergen wanneer JavaScript draait, zodat inhoud altijd leesbaar blijft. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.stack {
+  margin-top: var(--space-5);
+}
+
+.stack--sm {
+  margin-top: var(--space-4);
+}
+
+.stack--lg {
+  margin-top: var(--space-6);
+}
+
+.gap-after {
+  margin-bottom: var(--space-5);
+}
+
+.flush {
+  margin: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Houdt gecentreerde inleidingen op een leesbare regellengte. */
+.text-center .lead {
+  max-width: 46ch;
+  margin-inline: auto;
+}
+
+.fieldset-reset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--space-5);
+}
+
+.fieldset-reset legend {
+  padding: 0;
+  margin-bottom: var(--space-3);
+}
