@@ -6,8 +6,13 @@ WordPress blokthema zodat de zaak zelf teksten en foto's kan aanpassen.
 
 ## Bekijken
 
-De site staat online via GitHub Pages. Het adres staat in de rechterkolom van
-deze pagina onder "Deployments".
+**https://esmeebryon.github.io/Lyssens-website/**
+
+Dit is nog een voorbeeldversie. Zoekmachines krijgen de instructie hem te
+negeren, via `robots.txt` en een `noindex` op elke pagina. Enkel wie de link
+krijgt, vindt de site. Zet die twee terug zodra de site echt live mag.
+
+Elke wijziging op `main` komt automatisch online.
 
 ## Mappen
 
