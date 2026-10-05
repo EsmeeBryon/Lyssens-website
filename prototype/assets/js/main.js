@@ -153,26 +153,29 @@ function winkelStatus() {
   const vandaag = OPENINGSUREN[nu.dag];
 
   if (vandaag === "afspraak") {
-    return { status: "afspraak", tekst: "Vandaag enkel op afspraak, bel ons gerust even" };
+    return { status: "afspraak", tekst: "Onze winkel is vandaag enkel open op afspraak" };
   }
 
   if (Array.isArray(vandaag)) {
     const open = vandaag.find(([start, eind]) => nu.minuten >= start && nu.minuten < eind);
     if (open) {
-      return { status: "open", tekst: `Nu open, tot ${toonUur(open[1])}` };
+      return { status: "open", tekst: `Onze winkel is open tot ${toonUur(open[1])}` };
     }
 
     const straks = vandaag.find(([start]) => nu.minuten < start);
     if (straks) {
-      return { status: "straks", tekst: `Nu gesloten, vanaf ${toonUur(straks[0])} ben je welkom` };
+      return { status: "straks", tekst: `Onze winkel opent vandaag om ${toonUur(straks[0])}` };
     }
   }
 
   const volgende = volgendeOpening(nu.dag);
-  if (!volgende) return { status: "gesloten", tekst: "Nu gesloten" };
+  if (!volgende) return { status: "gesloten", tekst: "Onze winkel is nu gesloten" };
 
   const wanneer = volgende.morgen ? "morgen" : DAGNAMEN[volgende.dag];
-  return { status: "gesloten", tekst: `Nu gesloten, ${wanneer} open vanaf ${toonUur(volgende.start)}` };
+  return {
+    status: "gesloten",
+    tekst: `Onze winkel is gesloten, ${wanneer} open vanaf ${toonUur(volgende.start)}`,
+  };
 }
 
 function toonWinkelStatus() {
