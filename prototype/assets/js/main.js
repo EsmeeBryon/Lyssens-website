@@ -97,8 +97,99 @@ function markToday() {
   });
 }
 
+/* Openingsuren in minuten na middernacht. Pas je deze aan, pas dan ook de
+   lijst met uren op winkel.html, over.html en contact.html aan. */
+const OPENINGSUREN = {
+  0: [],
+  1: "afspraak",
+  2: [[510, 720], [780, 1080]],
+  3: [[510, 720], [780, 1080]],
+  4: [[510, 720], [780, 1080]],
+  5: [[510, 720], [780, 1080]],
+  6: [[540, 900]],
+};
+
+const DAGNAMEN = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
+
+function toonUur(minuten) {
+  const u = Math.floor(minuten / 60);
+  const m = String(minuten % 60).padStart(2, "0");
+  return `${u}.${m}`;
+}
+
+function volgendeOpening(vanafDag) {
+  for (let i = 1; i <= 7; i += 1) {
+    const dag = (vanafDag + i) % 7;
+    const uren = OPENINGSUREN[dag];
+    if (Array.isArray(uren) && uren.length) {
+      return { dag, start: uren[0][0], morgen: i === 1 };
+    }
+  }
+  return null;
+}
+
+/* Leest de klok in Brussel, zodat de melding ook klopt voor wie vanuit het
+   buitenland kijkt. */
+function brusselNu() {
+  const delen = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Brussels",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(new Date());
+
+  const waarde = (type) => delen.find((d) => d.type === type).value;
+  const dagen = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+
+  return {
+    dag: dagen[waarde("weekday")],
+    minuten: Number(waarde("hour")) * 60 + Number(waarde("minute")),
+  };
+}
+
+function winkelStatus() {
+  const nu = brusselNu();
+  const vandaag = OPENINGSUREN[nu.dag];
+
+  if (vandaag === "afspraak") {
+    return { status: "afspraak", tekst: "Vandaag enkel op afspraak, bel ons gerust even" };
+  }
+
+  if (Array.isArray(vandaag)) {
+    const open = vandaag.find(([start, eind]) => nu.minuten >= start && nu.minuten < eind);
+    if (open) {
+      return { status: "open", tekst: `Nu open, tot ${toonUur(open[1])}` };
+    }
+
+    const straks = vandaag.find(([start]) => nu.minuten < start);
+    if (straks) {
+      return { status: "straks", tekst: `Nu gesloten, vanaf ${toonUur(straks[0])} ben je welkom` };
+    }
+  }
+
+  const volgende = volgendeOpening(nu.dag);
+  if (!volgende) return { status: "gesloten", tekst: "Nu gesloten" };
+
+  const wanneer = volgende.morgen ? "morgen" : DAGNAMEN[volgende.dag];
+  return { status: "gesloten", tekst: `Nu gesloten, ${wanneer} open vanaf ${toonUur(volgende.start)}` };
+}
+
+function toonWinkelStatus() {
+  const blok = document.querySelector("[data-winkelstatus]");
+  if (!blok) return;
+
+  const doel = blok.querySelector("[data-winkelstatus-tekst]");
+  if (!doel) return;
+
+  const { status, tekst } = winkelStatus();
+  blok.dataset.winkelstatus = status;
+  doel.textContent = tekst;
+}
+
 initNav();
 initCalculator();
 initDemoForms();
 initReveal();
 markToday();
+toonWinkelStatus();

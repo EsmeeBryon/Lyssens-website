@@ -120,6 +120,17 @@
   box-shadow: 0 0 0 4px rgb(110 194 138 / 25%);
 }
 
+[data-winkelstatus="straks"] .topbar__dot,
+[data-winkelstatus="afspraak"] .topbar__dot {
+  background: #d9a441;
+  box-shadow: 0 0 0 4px rgb(217 164 65 / 25%);
+}
+
+[data-winkelstatus="gesloten"] .topbar__dot {
+  background: #9b9089;
+  box-shadow: 0 0 0 4px rgb(155 144 137 / 22%);
+}
+
 .topbar__links {
   display: flex;
   flex-wrap: wrap;
