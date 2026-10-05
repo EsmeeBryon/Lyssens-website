@@ -1183,6 +1183,10 @@
   padding: 0;
 }
 
+.jumpnav--center {
+  justify-content: center;
+}
+
 .jumpnav a {
   display: inline-flex;
   align-items: center;
