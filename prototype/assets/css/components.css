@@ -1267,10 +1267,23 @@
 
 /* ---------- Mensen ---------- */
 
+/* Vier kaarten: een rij op een computer, twee keer twee op een tablet. */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-5);
+}
+
+@media (min-width: 62rem) {
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 34rem) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .person {
