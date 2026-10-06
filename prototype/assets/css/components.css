@@ -594,7 +594,7 @@
 
 .usp-bar {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
   gap: var(--space-4);
   padding: var(--space-5);
   background: var(--surface);
@@ -641,7 +641,7 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
   gap: var(--space-5);
 }
 
@@ -785,7 +785,7 @@
   font-size: 0.6rem;
   font-weight: 700;
   line-height: 1.3;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
@@ -794,6 +794,30 @@
 .seal--inline {
   position: relative;
   display: inline-grid;
+}
+
+.teaser-foto {
+  position: relative;
+  margin: 0;
+}
+
+.teaser-foto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-m);
+}
+
+.teaser-foto .seal {
+  left: var(--space-4);
+  bottom: calc(var(--space-6) * -1);
+}
+
+@media (min-width: 62.01rem) {
+  .teaser-foto .seal {
+    left: -2rem;
+  }
 }
 
 .reviews {
@@ -813,6 +837,7 @@
 }
 
 .review p {
+  font-size: var(--step-s);
   line-height: 1.6;
   margin-bottom: var(--space-3);
 }
@@ -1041,7 +1066,7 @@
 
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   gap: var(--space-5);
 }
 
@@ -1206,7 +1231,7 @@
 
 @media (max-width: 62rem) {
   .split-2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .split-2--flip > :first-child {
@@ -1218,7 +1243,7 @@
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
   gap: var(--space-7);
   counter-reset: step;
   list-style: none;
@@ -1522,7 +1547,11 @@
 
 @media (max-width: 45rem) {
   .form-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .panel {
+    padding: var(--space-5);
   }
 }
 
@@ -1685,7 +1714,7 @@ body:has(.winkel-vandaag) .topbar__inner {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
   gap: var(--space-4);
 }
 
@@ -1773,7 +1802,7 @@ body:has(.winkel-vandaag) .topbar__inner {
 /* Op gsm: alle werken in twee kolommen, zonder groepstitels. */
 @media (max-width: 45rem) {
   .werk-index {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-2);
     margin-top: var(--space-5);
     padding: var(--space-3);
@@ -1795,6 +1824,9 @@ body:has(.winkel-vandaag) .topbar__inner {
 
   .werk-index strong {
     font-size: var(--step-0);
+    min-width: 0;
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 }
 
@@ -2474,90 +2506,83 @@ body:has(.winkel-vandaag) .topbar__inner {
    verfkleur "geschilderd", met een kleurstaal erbij zoals in de winkel.
    WordPress: Groep-blok met een kleur uit het thema-palet. */
 
-.section--olijf { --wand: #4b5540; }
-.section--terra { --wand: #9a4c2a; }
-.section--oker { --wand: #ead6ad; }
+/* Sigma Kleur van het Jaar. Komt er een nieuwe bij, dan volstaat één regel hier. */
+.section--country-soil { --wand: #9a8879; } /* 2027, PPG15-30 */
+.section--secret-safari { --wand: #c6bb69; } /* 2026, PPG1110-4 */
+.section--amethyst-shadow { --wand: #573f4b; } /* 2025, PPG1046-7 */
+.section--limitless { --wand: #f2d9b5; } /* 2024, PPG1091-3 */
 
-.section--olijf,
-.section--terra,
-.section--oker {
+:is(.section--country-soil, .section--secret-safari, .section--amethyst-shadow, .section--limitless) {
   position: relative;
   background: var(--wand);
 }
 
-.section--olijf,
-.section--terra {
+/* Op een lichte muur alles een tint donkerder, zodat het leesbaar blijft. */
+:is(.section--country-soil, .section--secret-safari, .section--limitless) {
+  --ink-soft: var(--ink);
+  --accent: #4a220b;
+  --accent-strong: #2e1406;
+  --accent-deep: #2e1406;
+  color: var(--ink);
+}
+
+.section--amethyst-shadow {
   color: #f7f1e8;
 }
 
-.section--olijf :is(h2, h3),
-.section--terra :is(h2, h3) {
+.section--amethyst-shadow :is(h2, h3) {
   color: #fff;
 }
 
-.section--olijf :is(.eyebrow, .lead),
-.section--terra :is(.eyebrow, .lead) {
+.section--amethyst-shadow :is(.eyebrow, .lead) {
   color: rgb(255 255 255 / 86%);
 }
 
-.section--olijf .eyebrow::before,
-.section--terra .eyebrow::before {
+.section--amethyst-shadow .eyebrow::before {
   background: currentColor;
 }
 
-.section--olijf :is(.checklist, .selfservice__list) li::before,
-.section--terra :is(.checklist, .selfservice__list) li::before {
+.section--amethyst-shadow :is(.checklist, .selfservice__list) li::before {
   background: rgb(255 255 255 / 16%);
   color: #fff;
 }
 
-.section--olijf .btn--primary,
-.section--terra .btn--primary {
+.section--amethyst-shadow .btn--primary {
   background: #fff;
   color: var(--ink);
 }
 
-.section--olijf .btn--ghost,
-.section--terra .btn--ghost {
+.section--amethyst-shadow .btn--ghost {
   color: #fff;
   border-color: #fff;
 }
 
-.section--olijf :is(.btn--primary, .btn--ghost):hover,
-.section--terra :is(.btn--primary, .btn--ghost):hover {
+.section--amethyst-shadow :is(.btn--primary, .btn--ghost):hover {
   background: var(--ink);
   border-color: var(--ink);
   color: #fff;
 }
 
-.section--olijf :is(.note, .panel),
-.section--terra :is(.note, .panel) {
+.section--amethyst-shadow :is(.note, .panel) {
   color: var(--ink);
 }
 
-.section--olijf .panel :is(h2, h3),
-.section--terra .panel :is(h2, h3) {
+.section--amethyst-shadow .panel :is(h2, h3) {
   color: var(--ink);
 }
 
-.section--olijf .link-arrow,
-.section--terra .link-arrow {
+.section--amethyst-shadow .link-arrow {
   color: #fff;
   border-bottom-color: rgb(255 255 255 / 60%);
 }
 
-.section--olijf .link-arrow:is(:hover, :focus-visible),
-.section--terra .link-arrow:is(:hover, :focus-visible) {
+.section--amethyst-shadow .link-arrow:is(:hover, :focus-visible) {
   color: #fff;
   border-bottom-color: #fff;
 }
 
-.section--oker .eyebrow {
-  color: var(--accent-deep);
-}
-
 /* Op een gekleurde muur volstaat de kleur zelf, geen extra kader. */
-:is(.section--olijf, .section--terra, .section--oker) .quote {
+:is(.section--country-soil, .section--secret-safari, .section--amethyst-shadow, .section--limitless) .quote {
   padding: 0;
   background: none;
   color: inherit;
@@ -2565,7 +2590,11 @@ body:has(.winkel-vandaag) .topbar__inner {
   line-height: 1.35;
 }
 
-:is(.section--olijf, .section--terra) .quote footer {
+:is(.section--country-soil, .section--secret-safari, .section--limitless) .quote footer {
+  color: var(--ink-soft);
+}
+
+.section--amethyst-shadow .quote footer {
   color: rgb(255 255 255 / 80%);
 }
 
@@ -2670,47 +2699,78 @@ body:has(.winkel-vandaag) .topbar__inner {
   }
 }
 
-.score-groot {
+/* Reviews zijn bijzaak: kleine kop, score ernaast, drie gelijke kolommen. */
+.reviews__kop {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: var(--space-3);
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.reviews__kop h2 {
+  margin: 0;
+  font-size: var(--step-2);
+}
+
+.reviews__kop p {
   margin: 0;
   color: var(--ink-soft);
   font-size: var(--step-s);
   font-weight: 700;
 }
 
-.score-groot strong {
+/* ---------- Ons verhaal: jaartallen die als een trap oplopen ---------- */
+
+.verhaal {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.verhaal li:nth-child(2) { margin-top: var(--space-6); }
+.verhaal li:nth-child(3) { margin-top: var(--space-9); }
+.verhaal li:nth-child(4) { margin-top: calc(var(--space-9) + var(--space-6)); }
+
+.verhaal__jaar {
+  display: block;
+  margin-bottom: var(--space-3);
   font-family: var(--font-display);
-  font-size: clamp(3rem, 2rem + 4vw, 5.5rem);
-  line-height: 0.9;
+  font-size: var(--step-4);
+  font-weight: 600;
+  line-height: 1;
   color: var(--accent-strong);
 }
 
-/* ---------- Eén review groot, twee klein ---------- */
-
-.reviews--uitgelicht {
-  grid-template-columns: 1.35fr 1fr;
-  gap: var(--space-6) var(--space-9);
+.verhaal li:last-child .verhaal__jaar {
+  width: fit-content;
+  padding-bottom: 0.12em;
+  background: var(--brush) no-repeat 0 100% / 100% 0.18em;
+  color: var(--ink);
 }
 
-.reviews--uitgelicht .review:first-child {
-  grid-row: span 2;
-}
-
-.reviews--uitgelicht .review:first-child p:not(.review__stars) {
-  font-family: var(--font-display);
-  font-size: var(--step-2);
-  line-height: 1.35;
+.verhaal p {
+  margin: 0;
 }
 
 @media (max-width: 62rem) {
-  .reviews--uitgelicht {
-    grid-template-columns: 1fr;
+  .verhaal {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6) var(--space-7);
   }
 
-  .reviews--uitgelicht .review:first-child {
-    grid-row: auto;
+  .verhaal li:nth-child(n) {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 34rem) {
+  .verhaal {
+    grid-template-columns: 1fr;
   }
 }
 
