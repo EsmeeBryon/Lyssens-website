@@ -2506,19 +2506,23 @@ body:has(.winkel-vandaag) .topbar__inner {
    verfkleur "geschilderd", met een kleurstaal erbij zoals in de winkel.
    WordPress: Groep-blok met een kleur uit het thema-palet. */
 
-/* Sigma Kleur van het Jaar. Komt er een nieuwe bij, dan volstaat één regel hier. */
+/* Sigma Kleur van het Jaar. Nieuw jaar = één regel erbij en een muur kiezen. */
 .section--country-soil { --wand: #9a8879; } /* 2027, PPG15-30 */
 .section--secret-safari { --wand: #c6bb69; } /* 2026, PPG1110-4 */
 .section--amethyst-shadow { --wand: #573f4b; } /* 2025, PPG1046-7 */
 .section--limitless { --wand: #f2d9b5; } /* 2024, PPG1091-3 */
+.section--vining-ivy { --wand: #4b7378; } /* 2023, PPG1148-6 */
+.section--olive-sprig { --wand: #acaf95; } /* 2022, PPG1125-4 */
+.section--transcend { --wand: #c3ac98; } /* 2021, PPG1079-4 */
+.section--chinese-porcelain { --wand: #3a5f7d; } /* 2020, PPG1160-6 */
 
-:is(.section--country-soil, .section--secret-safari, .section--amethyst-shadow, .section--limitless) {
+.muur {
   position: relative;
   background: var(--wand);
 }
 
 /* Op een lichte muur alles een tint donkerder, zodat het leesbaar blijft. */
-:is(.section--country-soil, .section--secret-safari, .section--limitless) {
+.muur:not(.muur--donker) {
   --ink-soft: var(--ink);
   --accent: #4a220b;
   --accent-strong: #2e1406;
@@ -2526,63 +2530,56 @@ body:has(.winkel-vandaag) .topbar__inner {
   color: var(--ink);
 }
 
-.section--amethyst-shadow {
-  color: #f7f1e8;
-}
-
-.section--amethyst-shadow :is(h2, h3) {
+.muur--donker {
   color: #fff;
 }
 
-.section--amethyst-shadow :is(.eyebrow, .lead) {
-  color: rgb(255 255 255 / 86%);
+.muur--donker :is(h2, h3, .eyebrow, .lead) {
+  color: #fff;
 }
 
-.section--amethyst-shadow .eyebrow::before {
+.muur--donker .eyebrow::before {
   background: currentColor;
 }
 
-.section--amethyst-shadow :is(.checklist, .selfservice__list) li::before {
+.muur--donker :is(.checklist, .selfservice__list) li::before {
   background: rgb(255 255 255 / 16%);
   color: #fff;
 }
 
-.section--amethyst-shadow .btn--primary {
+.muur--donker .btn--primary {
   background: #fff;
   color: var(--ink);
 }
 
-.section--amethyst-shadow .btn--ghost {
+.muur--donker .btn--ghost {
   color: #fff;
   border-color: #fff;
 }
 
-.section--amethyst-shadow :is(.btn--primary, .btn--ghost):hover {
+.muur--donker :is(.btn--primary, .btn--ghost):hover {
   background: var(--ink);
   border-color: var(--ink);
   color: #fff;
 }
 
-.section--amethyst-shadow :is(.note, .panel) {
+.muur--donker :is(.note, .panel),
+.muur--donker .panel :is(h2, h3) {
   color: var(--ink);
 }
 
-.section--amethyst-shadow .panel :is(h2, h3) {
-  color: var(--ink);
-}
-
-.section--amethyst-shadow .link-arrow {
+.muur--donker .link-arrow {
   color: #fff;
   border-bottom-color: rgb(255 255 255 / 60%);
 }
 
-.section--amethyst-shadow .link-arrow:is(:hover, :focus-visible) {
+.muur--donker .link-arrow:is(:hover, :focus-visible) {
   color: #fff;
   border-bottom-color: #fff;
 }
 
 /* Op een gekleurde muur volstaat de kleur zelf, geen extra kader. */
-:is(.section--country-soil, .section--secret-safari, .section--amethyst-shadow, .section--limitless) .quote {
+.muur .quote {
   padding: 0;
   background: none;
   color: inherit;
@@ -2590,12 +2587,8 @@ body:has(.winkel-vandaag) .topbar__inner {
   line-height: 1.35;
 }
 
-:is(.section--country-soil, .section--secret-safari, .section--limitless) .quote footer {
-  color: var(--ink-soft);
-}
-
-.section--amethyst-shadow .quote footer {
-  color: rgb(255 255 255 / 80%);
+.muur .quote footer {
+  color: inherit;
 }
 
 /* Het kleurstaaltje hangt half over de rand van de vorige sectie, als een
