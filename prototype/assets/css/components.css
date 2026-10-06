@@ -1735,6 +1735,20 @@ body:has(.winkel-vandaag) .topbar__inner {
   margin-top: var(--space-7);
 }
 
+/* Lege plaats in een fotorij, tot de zaak er zelf een foto in zet. */
+.gallery__leeg {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  padding: var(--space-3);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-m);
+  font-size: var(--step-xs);
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
 .werk-fotos__titel {
   margin: 0 0 var(--space-3);
   font-size: var(--step-s);
