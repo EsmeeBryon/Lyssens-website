@@ -73,24 +73,46 @@
     </div>
   </nav>
 
-  <!-- WordPress: Groep met rasterindeling, per tegel een link met Afbeelding en tekst. -->
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">Uitvoerende werken</p>
-      <h1>Alles wat wij bij je thuis uitvoeren</h1>
-      <p class="lead">Van &eacute;&eacute;n kamer tot je hele woning. Onze eigen ploeg doet het werk, de zaakvoerders staan zelf mee op de werf en je offerte is altijd gratis.</p>
+  <!-- WordPress: zelfde paginabanner als de winkel (Kolommen met tekst en Afbeelding), daaronder Kolommen met drie lijsten. -->
+  <section class="page-hero page-hero--banner">
+    <div class="container split-2">
+      <div>
+        <p class="eyebrow">Uitvoerende werken</p>
+        <h1>Alles wat wij bij je thuis uitvoeren</h1>
+        <p class="lead">Van &eacute;&eacute;n kamer tot je hele woning. Onze eigen ploeg doet het werk, de zaakvoerders staan zelf mee op de werf en je offerte is altijd gratis.</p>
+      </div>
+      <figure class="photo-card photo-card--wide">
+        <img src="assets/img/foto/Gordijnen.jpeg" alt="Gordijnen op maat in warm licht, geplaatst door Lyssens" width="1600" height="1200" fetchpriority="high" decoding="async">
+      </figure>
+    </div>
 
-      <ul class="werk-index">
-        <li><a class="werk-tegel" href="#schilderwerken"><img src="assets/img/foto/Schilderwerken.jpeg" alt="" width="1200" height="1600" decoding="async"><span><strong>Schilderwerken</strong><span>Binnen en buiten, strak afgewerkt</span></span></a></li>
-        <li><a class="werk-tegel" href="#behangen"><img src="assets/img/foto/Behangen_3.jpg" alt="" width="960" height="508" decoding="async"><span><strong>Behangen</strong><span>Zonder zichtbare naden</span></span></a></li>
-        <li><a class="werk-tegel" href="#vloerbekleding"><img src="assets/img/foto/Vloerbekleding_3.jpg" alt="" width="960" height="508" decoding="async"><span><strong>Vloerbekleding</strong><span>Opgemeten en geplaatst</span></span></a></li>
-        <li><a class="werk-tegel" href="#raamdecoratie"><img src="assets/img/foto/Gordijnen.jpeg" alt="" width="1600" height="1200" decoding="async"><span><strong>Raamdecoratie</strong><span>Op maat uit eigen atelier</span></span></a></li>
-        <li><a class="werk-tegel" href="#spuittechnieken"><img src="assets/img/foto/Spuitwerken.jpeg" alt="" width="1200" height="1600" decoding="async"><span><strong>Spuittechnieken</strong><span>Glad, zonder borstelstreken</span></span></a></li>
-        <li><a class="werk-tegel" href="#luchtgommen"><img src="assets/img/foto/Lyssens-Luchtgommen_1.jpg" alt="" width="1139" height="854" decoding="async"><span><strong>Luchtgommen</strong><span>Oude lagen zacht verwijderd</span></span></a></li>
-        <li><a class="werk-tegel" href="#kroonlijsten"><img src="assets/img/foto/Kroonlijsten_1.jpg" alt="" width="960" height="508" decoding="async"><span><strong>Kroonlijsten</strong><span>ORAC, strak geplaatst</span></span></a></li>
-        <li><a class="werk-tegel" href="#totaalproject"><img src="assets/img/foto/Totaalproject_1.jpg" alt="" width="960" height="508" decoding="async"><span><strong>Totaalproject</strong><span>Alles in &eacute;&eacute;n keer</span></span></a></li>
-        <li><a class="werk-tegel" href="#interieuradvies"><img src="assets/img/foto/Interieuradvies.jpg" alt="" width="960" height="508" decoding="async"><span><strong>Interieuradvies</strong><span>Gratis bij je thuis</span></span></a></li>
-      </ul>
+    <div class="container">
+      <nav class="werk-index" aria-label="Overzicht van de werken">
+        <div class="werk-index__groep">
+          <h2 class="werk-index__titel">Onze werken</h2>
+          <ul>
+            <li><a href="#schilderwerken"><span class="werk-index__nr">01</span><span><strong>Schilderwerken</strong><span>Binnen en buiten, strak afgewerkt</span></span></a></li>
+            <li><a href="#behangen"><span class="werk-index__nr">02</span><span><strong>Behangen</strong><span>Zonder zichtbare naden</span></span></a></li>
+            <li><a href="#vloerbekleding"><span class="werk-index__nr">03</span><span><strong>Vloerbekleding</strong><span>Opgemeten en geplaatst</span></span></a></li>
+            <li><a href="#raamdecoratie"><span class="werk-index__nr">04</span><span><strong>Raamdecoratie</strong><span>Op maat uit eigen atelier</span></span></a></li>
+          </ul>
+        </div>
+        <div class="werk-index__groep">
+          <h2 class="werk-index__titel">Specialiteiten</h2>
+          <ul>
+            <li><a href="#spuittechnieken"><span class="werk-index__nr">05</span><span><strong>Spuittechnieken</strong><span>Glad, zonder borstelstreken</span></span></a></li>
+            <li><a href="#luchtgommen"><span class="werk-index__nr">06</span><span><strong>Luchtgommen</strong><span>Oude lagen zacht verwijderd</span></span></a></li>
+            <li><a href="#kroonlijsten"><span class="werk-index__nr">07</span><span><strong>Kroonlijsten</strong><span>ORAC, strak geplaatst</span></span></a></li>
+          </ul>
+        </div>
+        <div class="werk-index__groep">
+          <h2 class="werk-index__titel">Zo werken we</h2>
+          <ul>
+            <li><a href="#totaalproject"><span class="werk-index__nr">08</span><span><strong>Totaalproject</strong><span>Alles in &eacute;&eacute;n keer</span></span></a></li>
+            <li><a href="#interieuradvies"><span class="werk-index__nr">09</span><span><strong>Interieuradvies</strong><span>Gratis bij je thuis</span></span></a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
   </section>
 
@@ -211,11 +233,10 @@
   <section class="section section--alt werkblok werkblok--flip" id="raamdecoratie" aria-labelledby="raam-titel">
     <div class="container werkblok__grid">
       <figure class="collage">
-        <img class="collage__groot" src="assets/img/foto/Gordijnen.jpeg" alt="Gordijnen op maat gemaakt en geplaatst door Lyssens" width="1600" height="1200" loading="lazy" decoding="async">
+        <img class="collage__groot" src="assets/img/foto/Lyssens-Raamdecoratie_3.jpg" alt="Raamdecoratie op maat geplaatst door Lyssens" width="1139" height="854" loading="lazy" decoding="async">
         <div class="collage__klein">
           <img src="assets/img/foto/Raamdeco-1.jpeg" alt="Raamdecoratie in een woning" width="1200" height="1600" loading="lazy" decoding="async">
           <img src="assets/img/foto/Raamdecoratie_6.jpg" alt="Raamdecoratie met lamellen" width="960" height="508" loading="lazy" decoding="async">
-          <img src="assets/img/foto/Lyssens-Raamdecoratie_3.jpg" alt="Raamdecoratie geplaatst door Lyssens" width="1139" height="854" loading="lazy" decoding="async">
         </div>
       </figure>
 
