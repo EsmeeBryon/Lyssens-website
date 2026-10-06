@@ -191,6 +191,14 @@ function toonWinkelStatus() {
   });
 }
 
+function initKopschaduw() {
+  const kop = document.querySelector(".site-header");
+  if (!kop) return;
+  const zet = () => kop.toggleAttribute("data-gescrold", window.scrollY > 8);
+  zet();
+  window.addEventListener("scroll", zet, { passive: true });
+}
+
 /* Op een gsm wijkt de belbalk zolang dezelfde knoppen of het formulier al in beeld staan. */
 function initBelbalk() {
   const balk = document.querySelector(".call-bar");
@@ -235,3 +243,4 @@ markToday();
 toonWinkelStatus();
 vulAanvraagIn();
 initBelbalk();
+initKopschaduw();

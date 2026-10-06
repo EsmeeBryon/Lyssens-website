@@ -151,7 +151,12 @@
   top: 0;
   z-index: 50;
   background: var(--paper);
-  border-bottom: 1px solid var(--line);
+  transition: box-shadow 250ms ease;
+}
+
+/* Pas als je scrollt, zweeft de menubalk met een zachte schaduw boven de inhoud. */
+.site-header[data-gescrold] {
+  box-shadow: 0 8px 28px rgb(40 24 18 / 9%);
 }
 
 .site-header__inner {
@@ -265,7 +270,6 @@
     gap: var(--space-4);
     padding: var(--space-5);
     background: var(--paper);
-    border-bottom: 1px solid var(--line);
     box-shadow: var(--shadow-m);
   }
 
@@ -276,13 +280,22 @@
   .nav__list {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-3);
+    gap: var(--space-1);
   }
 
   .nav__link {
     display: block;
-    padding: var(--space-3) 0;
-    border-bottom: 1px solid var(--line);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-s);
+  }
+
+  .nav__link[aria-current="page"] {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+  }
+
+  .nav__link::after {
+    display: none;
   }
 }
 
@@ -860,8 +873,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-5);
-  padding-block: var(--space-6);
-  border-block: 1px solid var(--line);
+  padding: var(--space-6) var(--space-7);
+  background: var(--surface);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-m);
 }
 
 .facts strong {
@@ -1005,22 +1020,24 @@
 
 .selfservice__list li {
   position: relative;
-  padding: var(--space-3) 0 var(--space-3) 1.6rem;
-  border-bottom: 1px solid var(--line);
+  padding: var(--space-1) 0 var(--space-1) 2.2rem;
   font-weight: 600;
   font-size: var(--step-s);
-}
-
-.selfservice__list li:last-child {
-  border-bottom: 0;
 }
 
 .selfservice__list li::before {
   content: "\2713";
   position: absolute;
   left: 0;
-  top: var(--space-3);
+  top: 0.15rem;
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
   color: var(--accent-strong);
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
@@ -1367,12 +1384,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--space-3);
-  padding: var(--space-3) 0;
-  border-bottom: 1px dashed var(--line);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-s);
 }
 
-.hours li:last-child {
-  border-bottom: 0;
+/* Een lichte afwisseling in toon maakt de rijen leesbaar zonder lijnen. */
+.hours li:nth-child(odd) {
+  background: var(--paper);
 }
 
 .hours__day {
@@ -1386,8 +1404,7 @@
 
 .hours li[data-today="true"] {
   background: var(--accent-soft);
-  border-radius: var(--radius-s);
-  padding-inline: var(--space-3);
+  color: var(--accent-deep);
 }
 
 .panel {
@@ -1605,10 +1622,12 @@ body:has(.winkel-vandaag) .topbar__inner {
   justify-content: flex-end;
 }
 
+/* Een warm, afgerond vlak waarop de keuzes liggen, in plaats van een lijn. */
 .winkel-aanbod {
   margin-top: var(--space-6);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line);
+  padding: var(--space-6) var(--space-5);
+  background: var(--paper-alt);
+  border-radius: var(--radius-l);
 }
 
 .winkel-aanbod h2 {
@@ -1619,8 +1638,8 @@ body:has(.winkel-vandaag) .topbar__inner {
 
 @media (min-width: 45.01rem) {
   .winkel-aanbod {
-    margin-top: var(--space-8);
-    padding-top: var(--space-7);
+    margin-top: var(--space-7);
+    padding: var(--space-7) var(--space-6);
   }
 }
 
@@ -1722,13 +1741,15 @@ body:has(.winkel-vandaag) .topbar__inner {
 /* ---------- Wat wij uitvoeren ---------- */
 
 /* Rustig overzicht bovenaan: drie groepen genummerde links, de foto's komen pas lager. */
+/* Inhoudsopgave op een warm, afgerond vlak; de witte kaartjes liggen erop. */
 .werk-index {
   display: grid;
   grid-template-columns: 4fr 3fr 2.5fr;
   gap: var(--space-5);
   margin-top: var(--space-7);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--line);
+  padding: var(--space-6);
+  background: var(--paper-alt);
+  border-radius: var(--radius-l);
 }
 
 .werk-index__titel {
@@ -1796,8 +1817,7 @@ body:has(.winkel-vandaag) .topbar__inner {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-2);
     margin-top: var(--space-5);
-    padding-top: 0;
-    border-top: 0;
+    padding: var(--space-3);
   }
 
   .werk-index__groep,
@@ -1880,21 +1900,30 @@ body:has(.winkel-vandaag) .topbar__inner {
 }
 
 /* Meer details om open te klikken, zoals het Details-blok in WordPress. */
+/* "Meer details" als zacht knopje dat openklapt, zoals het Details-blok in WordPress. */
 .meer {
   margin-top: var(--space-5);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
 .meer summary {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  padding: var(--space-3) 0;
+  gap: var(--space-2);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  font-size: var(--step-s);
   font-weight: 700;
   color: var(--accent-strong);
   cursor: pointer;
   list-style: none;
+  transition: background var(--transition), color var(--transition);
+}
+
+.meer summary:hover,
+.meer summary:focus-visible {
+  background: var(--accent-strong);
+  color: #fff;
 }
 
 .meer summary::-webkit-details-marker {
@@ -1903,7 +1932,7 @@ body:has(.winkel-vandaag) .topbar__inner {
 
 .meer summary::after {
   content: "+";
-  font-size: 1.4em;
+  font-size: 1.25em;
   line-height: 1;
   transition: transform var(--transition);
 }
@@ -1913,7 +1942,7 @@ body:has(.winkel-vandaag) .topbar__inner {
 }
 
 .meer__inhoud {
-  padding-bottom: var(--space-4);
+  padding-top: var(--space-4);
 }
 
 .meer__inhoud > * + * {
@@ -1951,7 +1980,6 @@ body:has(.winkel-vandaag) .topbar__inner {
 
 .special .meer {
   margin-top: var(--space-4);
-  border-bottom: 0;
 }
 
 /* Zo werken we: donkere band met twee kaarten en een klantcitaat. */
@@ -2106,14 +2134,13 @@ body:has(.winkel-vandaag) .topbar__inner {
 }
 
 .footer-bottom {
-  margin-top: var(--space-7);
-  padding-top: var(--space-4);
-  border-top: 1px solid rgb(255 255 255 / 15%);
+  margin-top: var(--space-8);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--space-3);
   font-size: var(--step-s);
+  opacity: 0.75;
 }
 
 @media (max-width: 62rem) {
@@ -2134,8 +2161,7 @@ body:has(.winkel-vandaag) .topbar__inner {
   gap: var(--space-2);
   padding: var(--space-3);
   background: var(--surface);
-  border-top: 1px solid var(--line);
-  box-shadow: 0 -6px 20px rgb(28 20 14 / 10%);
+  box-shadow: 0 -8px 28px rgb(28 20 14 / 12%);
 }
 
 .call-bar .btn {
