@@ -2082,11 +2082,11 @@ body:has(.winkel-vandaag) .topbar__inner {
   font-size: 0.9rem;
 }
 
-/* ---------- Voet: enkel wat je echt zoekt, adres, contact en openingsuren ---------- */
+/* ---------- Voet: logo en de praktische gegevens op één rij ---------- */
 
 .site-footer {
   background: var(--ink);
-  color: #ded6ce;
+  color: #fff;
   padding-block: var(--space-7) var(--space-5);
   font-size: var(--step-s);
   line-height: 1.6;
@@ -2095,18 +2095,15 @@ body:has(.winkel-vandaag) .topbar__inner {
 .site-footer a {
   display: inline-block;
   padding-block: 0.2rem;
-  color: #fff;
+  color: inherit;
 }
 
 .voet {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   gap: var(--space-5) var(--space-8);
-  align-items: start;
-}
-
-.voet__merk {
-  justify-self: start;
 }
 
 .voet__merk img {
@@ -2114,23 +2111,34 @@ body:has(.winkel-vandaag) .topbar__inner {
   width: auto;
 }
 
-.voet__contact {
-  font-style: normal;
+.voet__info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .voet__onder {
-  grid-column: 1 / -1;
-  margin: var(--space-2) 0 0;
-  opacity: 0.7;
+  flex-basis: 100%;
+  margin: 0;
+  color: #cfc7bf;
 }
 
-@media (max-width: 62rem) {
-  .voet {
-    grid-template-columns: 1fr 1fr;
-  }
+.voet__onder a {
+  color: inherit;
+}
 
-  .voet__merk {
-    grid-column: 1 / -1;
+/* Tablet: logo boven, gegevens netjes twee per rij. */
+@media (max-width: 62rem) {
+  .voet__info {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    flex-basis: 100%;
+    justify-content: start;
+    gap: var(--space-1) var(--space-7);
   }
 }
 
@@ -2141,7 +2149,6 @@ body:has(.winkel-vandaag) .topbar__inner {
   }
 
   .voet {
-    grid-template-columns: 1fr;
     gap: var(--space-4);
   }
 
@@ -2149,8 +2156,9 @@ body:has(.winkel-vandaag) .topbar__inner {
     display: none;
   }
 
-  .voet__onder {
-    margin-top: 0;
+  .voet__info {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
   }
 }
 
