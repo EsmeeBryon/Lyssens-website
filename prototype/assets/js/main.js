@@ -199,6 +199,46 @@ function initKopschaduw() {
   window.addEventListener("scroll", zet, { passive: true });
 }
 
+/* Zoals "Vergroten bij klikken" van het Afbeelding-blok in WordPress. Geen foto's in links of banners. */
+function initVergroten() {
+  const fotos = [...document.querySelectorAll("main img")].filter(
+    (foto) => !foto.closest("a, button, .fotoband, .page-hero, .hero__stage, .person") && !/\.svg$/i.test(foto.getAttribute("src") || "")
+  );
+  if (!fotos.length || typeof HTMLDialogElement !== "function") return;
+
+  const venster = document.createElement("dialog");
+  venster.className = "lichtbak";
+  venster.setAttribute("aria-label", "Vergrote foto");
+  venster.innerHTML = '<button class="lichtbak__sluit" type="button" aria-label="Sluiten">&times;</button><img alt=""><p class="lichtbak__tekst"></p>';
+  document.body.append(venster);
+  const groot = venster.querySelector("img");
+  const tekst = venster.querySelector(".lichtbak__tekst");
+
+  venster.querySelector(".lichtbak__sluit").addEventListener("click", () => venster.close());
+  venster.addEventListener("click", (e) => {
+    if (e.target === venster) venster.close();
+  });
+  venster.addEventListener("close", () => groot.removeAttribute("src"));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && venster.open) venster.close();
+  });
+
+  fotos.forEach((foto) => {
+    const knop = document.createElement("button");
+    knop.type = "button";
+    knop.className = "vergroot";
+    knop.setAttribute("aria-label", `Vergroot de foto: ${foto.alt || "foto"}`);
+    foto.replaceWith(knop);
+    knop.append(foto);
+    knop.addEventListener("click", () => {
+      groot.src = foto.currentSrc || foto.src;
+      groot.alt = foto.alt;
+      tekst.textContent = foto.alt;
+      venster.showModal();
+    });
+  });
+}
+
 /* Op een gsm wijkt de belbalk zolang dezelfde knoppen of het formulier al in beeld staan. */
 function initBelbalk() {
   const balk = document.querySelector(".call-bar");
@@ -244,3 +284,4 @@ toonWinkelStatus();
 vulAanvraagIn();
 initBelbalk();
 initKopschaduw();
+initVergroten();

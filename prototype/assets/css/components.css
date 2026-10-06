@@ -2805,3 +2805,113 @@ body:has(.winkel-vandaag) .topbar__inner {
     margin-top: 0;
   }
 }
+
+/* ---------- Foto vergroten bij klikken ---------- */
+
+.vergroot {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  font: inherit;
+  cursor: zoom-in;
+}
+
+/* Waar de foto het vlak vult, vult de knop het ook. */
+.photo-card > .vergroot,
+.collage .vergroot {
+  height: 100%;
+}
+
+.vergroot:focus-visible {
+  outline: 3px solid var(--highlight);
+  outline-offset: 3px;
+}
+
+/* Vier hoekjes: het bekende teken voor "groter maken". */
+.vergroot::after {
+  content: "";
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 92%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317120e' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5'/%3E%3C/svg%3E") center / 1.05rem no-repeat;
+  box-shadow: var(--shadow-s);
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.vergroot:hover::after,
+.vergroot:focus-visible::after {
+  opacity: 1;
+}
+
+/* Op een gsm bestaat er geen muis, dus daar staat het teken er altijd. */
+@media (hover: none) {
+  .vergroot::after {
+    opacity: 1;
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.lichtbak {
+  max-width: 94vw;
+  max-height: 94vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.lichtbak::backdrop {
+  background: rgb(20 15 10 / 90%);
+}
+
+.lichtbak img {
+  display: block;
+  width: min(94vw, 1400px);
+  height: 82vh;
+  object-fit: contain;
+}
+
+.lichtbak__tekst {
+  margin: var(--space-3) auto 0;
+  max-width: 60ch;
+  color: #fff;
+  font-size: var(--step-s);
+  text-align: center;
+}
+
+.lichtbak__sluit {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: grid;
+  place-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lichtbak__sluit:focus-visible {
+  outline: 3px solid var(--highlight);
+  outline-offset: 3px;
+}
+
+html:has(.lichtbak[open]) {
+  overflow: hidden;
+}

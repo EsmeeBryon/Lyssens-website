@@ -43,6 +43,8 @@ h4 {
   margin: 0 0 var(--space-4);
   font-weight: 600;
   letter-spacing: -0.01em;
+  /* Vangnet: een te lang woord mag nooit buiten het scherm lopen. */
+  overflow-wrap: break-word;
 }
 
 h1 {
