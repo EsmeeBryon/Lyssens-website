@@ -13,7 +13,8 @@ permissions:
 
 concurrency:
   group: publiceren
-  cancel-in-progress: true
+  # Wachten in plaats van annuleren, anders krijgt de eigenaar bij elke snelle opeenvolging een mail.
+  cancel-in-progress: false
 
 jobs:
   website:
