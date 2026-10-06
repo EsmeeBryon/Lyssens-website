@@ -137,6 +137,8 @@
 }
 
 .topbar a {
+  display: inline-block;
+  padding-block: 0.2rem;
   color: inherit;
   text-decoration: none;
   border-bottom: 1px solid transparent;
@@ -797,7 +799,7 @@
 .reviews {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-7);
 }
 
 .reviews__score {
@@ -805,17 +807,13 @@
   color: var(--ink-soft);
 }
 
+/* Een kader is voor wat je kan aanklikken; reviews staan open op de pagina. */
 .review {
   margin: 0;
-  padding: var(--space-5);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
 }
 
 .review p {
-  font-size: var(--step-s);
-  line-height: 1.55;
+  line-height: 1.6;
   margin-bottom: var(--space-3);
 }
 
@@ -826,9 +824,9 @@
 }
 
 .review footer {
-  font-size: var(--step-xs);
+  font-size: var(--step-s);
   font-weight: 700;
-  color: var(--ink-soft);
+  color: var(--ink);
 }
 
 @media (max-width: 62rem) {
@@ -1000,10 +998,6 @@
   grid-template-columns: 1.1fr 1fr;
   gap: var(--space-7);
   align-items: center;
-  padding: var(--space-7);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-l);
 }
 
 .selfservice__list {
@@ -1053,15 +1047,12 @@
 
 .work {
   margin: 0;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  overflow: hidden;
-  box-shadow: var(--shadow-s);
 }
 
 .work__media {
   position: relative;
+  border-radius: var(--radius-m);
+  overflow: hidden;
 }
 
 .work__media img {
@@ -1071,7 +1062,7 @@
 }
 
 .work figcaption {
-  padding: var(--space-5);
+  padding-top: var(--space-4);
 }
 
 /* Een label als gewone tekst: een pil op de foto leek een knop. */
@@ -1228,7 +1219,7 @@
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--space-5);
+  gap: var(--space-7);
   counter-reset: step;
   list-style: none;
   padding: 0;
@@ -1237,25 +1228,16 @@
 
 .step {
   counter-increment: step;
-  position: relative;
-  padding: var(--space-6);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
 }
 
 .step::before {
   content: counter(step, decimal-leading-zero);
-  display: grid;
-  place-content: center;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: var(--space-4);
-  border-radius: 50%;
-  background: var(--accent-strong);
-  color: #fff;
+  display: block;
+  margin-bottom: var(--space-3);
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: var(--step-3);
+  line-height: 1;
+  color: var(--accent);
 }
 
 .step h3 {
@@ -1288,21 +1270,15 @@
   }
 }
 
-.person {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  overflow: hidden;
-}
-
 .person img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  border-radius: var(--radius-m);
 }
 
 .person__body {
-  padding: var(--space-5);
+  padding-top: var(--space-4);
 }
 
 .person__body h3 {
@@ -1559,6 +1535,8 @@
 }
 
 .breadcrumbs a {
+  display: inline-block;
+  padding-block: 0.2rem;
   color: inherit;
 }
 
@@ -1938,21 +1916,15 @@ body:has(.winkel-vandaag) .topbar__inner {
   align-items: stretch;
 }
 
-.special {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  overflow: hidden;
-}
-
 .special img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  border-radius: var(--radius-m);
 }
 
 .special__body {
-  padding: var(--space-5);
+  padding-top: var(--space-4);
 }
 
 .special__body h3 {
@@ -1972,10 +1944,7 @@ body:has(.winkel-vandaag) .topbar__inner {
 }
 
 .aanpak__kaart {
-  padding: var(--space-6);
-  border: 1px solid rgb(255 255 255 / 14%);
-  border-radius: var(--radius-m);
-  background: rgb(255 255 255 / 4%);
+  padding: 0;
 }
 
 .aanpak__kaart p {
@@ -2080,6 +2049,8 @@ body:has(.winkel-vandaag) .topbar__inner {
 }
 
 .site-footer a {
+  display: inline-block;
+  padding-block: 0.2rem;
   color: inherit;
 }
 
