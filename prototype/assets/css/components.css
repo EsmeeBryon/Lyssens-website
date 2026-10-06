@@ -2468,3 +2468,270 @@ body:has(.winkel-vandaag) .topbar__inner {
     max-height: calc(100dvh - 2 * var(--space-3));
   }
 }
+
+/* ---------- Geschilderde muren ----------
+   Een schildersbedrijf toont zijn vak: sommige secties zijn in een echte
+   verfkleur "geschilderd", met een kleurstaal erbij zoals in de winkel.
+   WordPress: Groep-blok met een kleur uit het thema-palet. */
+
+.section--olijf { --wand: #4b5540; }
+.section--terra { --wand: #9a4c2a; }
+.section--oker { --wand: #ead6ad; }
+
+.section--olijf,
+.section--terra,
+.section--oker {
+  position: relative;
+  background: var(--wand);
+}
+
+.section--olijf,
+.section--terra {
+  color: #f7f1e8;
+}
+
+.section--olijf :is(h2, h3),
+.section--terra :is(h2, h3) {
+  color: #fff;
+}
+
+.section--olijf :is(.eyebrow, .lead),
+.section--terra :is(.eyebrow, .lead) {
+  color: rgb(255 255 255 / 86%);
+}
+
+.section--olijf .eyebrow::before,
+.section--terra .eyebrow::before {
+  background: currentColor;
+}
+
+.section--olijf :is(.checklist, .selfservice__list) li::before,
+.section--terra :is(.checklist, .selfservice__list) li::before {
+  background: rgb(255 255 255 / 16%);
+  color: #fff;
+}
+
+.section--olijf .btn--primary,
+.section--terra .btn--primary {
+  background: #fff;
+  color: var(--ink);
+}
+
+.section--olijf .btn--ghost,
+.section--terra .btn--ghost {
+  color: #fff;
+  border-color: #fff;
+}
+
+.section--olijf :is(.btn--primary, .btn--ghost):hover,
+.section--terra :is(.btn--primary, .btn--ghost):hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.section--olijf :is(.note, .panel),
+.section--terra :is(.note, .panel) {
+  color: var(--ink);
+}
+
+.section--olijf .panel :is(h2, h3),
+.section--terra .panel :is(h2, h3) {
+  color: var(--ink);
+}
+
+.section--olijf .link-arrow,
+.section--terra .link-arrow {
+  color: #fff;
+  border-bottom-color: rgb(255 255 255 / 60%);
+}
+
+.section--olijf .link-arrow:is(:hover, :focus-visible),
+.section--terra .link-arrow:is(:hover, :focus-visible) {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.section--oker .eyebrow {
+  color: var(--accent-deep);
+}
+
+/* Op een gekleurde muur volstaat de kleur zelf, geen extra kader. */
+:is(.section--olijf, .section--terra, .section--oker) .quote {
+  padding: 0;
+  background: none;
+  color: inherit;
+  font-size: var(--step-2);
+  line-height: 1.35;
+}
+
+:is(.section--olijf, .section--terra) .quote footer {
+  color: rgb(255 255 255 / 80%);
+}
+
+/* Het kleurstaaltje hangt half over de rand van de vorige sectie, als een
+   staal dat tegen de muur is gehouden. Puur decoratief. */
+.kleurstaal {
+  position: absolute;
+  z-index: 2;
+  top: -1.9rem;
+  right: max(var(--space-5), calc(50% - var(--container) / 2));
+  display: grid;
+  grid-template-columns: 3rem auto;
+  column-gap: 0.65rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.4rem 1rem 0.4rem 0.4rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: var(--shadow-m);
+  rotate: 3deg;
+  color: var(--ink-soft);
+  font-size: var(--step-xs);
+  line-height: 1.25;
+  pointer-events: none;
+}
+
+.kleurstaal::before {
+  content: "";
+  grid-row: span 2;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3px;
+  background: var(--wand);
+}
+
+.kleurstaal strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  color: var(--ink);
+}
+
+.kleurstaal--links {
+  right: auto;
+  left: max(var(--space-5), calc(50% - var(--container) / 2));
+  rotate: -2deg;
+}
+
+/* ---------- Beeld over de volle breedte ---------- */
+
+.fotoband {
+  position: relative;
+  margin: 0;
+}
+
+.fotoband img {
+  display: block;
+  width: 100%;
+  height: clamp(16rem, 42vw, 34rem);
+  object-fit: cover;
+}
+
+.fotoband::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 45%;
+  background: linear-gradient(transparent, rgb(20 15 10 / 55%));
+}
+
+.fotoband figcaption {
+  position: absolute;
+  z-index: 1;
+  left: max(var(--space-5), calc(50% - var(--container) / 2));
+  bottom: var(--space-5);
+  color: #fff;
+  font-size: var(--step-s);
+  font-weight: 600;
+}
+
+/* ---------- Kop in twee kolommen: grote titel links, uitleg rechts ---------- */
+
+.section__head--split {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--space-3) var(--space-8);
+  align-items: end;
+  max-width: none;
+}
+
+.section__head--split h2 {
+  margin-bottom: 0;
+}
+
+.section__head--split .lead {
+  margin: 0;
+}
+
+@media (max-width: 62rem) {
+  .section__head--split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.score-groot {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--step-s);
+  font-weight: 700;
+}
+
+.score-groot strong {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 2rem + 4vw, 5.5rem);
+  line-height: 0.9;
+  color: var(--accent-strong);
+}
+
+/* ---------- Eén review groot, twee klein ---------- */
+
+.reviews--uitgelicht {
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--space-6) var(--space-9);
+}
+
+.reviews--uitgelicht .review:first-child {
+  grid-row: span 2;
+}
+
+.reviews--uitgelicht .review:first-child p:not(.review__stars) {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.35;
+}
+
+@media (max-width: 62rem) {
+  .reviews--uitgelicht {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews--uitgelicht .review:first-child {
+    grid-row: auto;
+  }
+}
+
+/* ---------- Voor en na, verspringend ---------- */
+
+.work-grid--verspringend {
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.work-grid--verspringend .work:nth-child(2) {
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 45rem) {
+  .work-grid--verspringend {
+    grid-template-columns: 1fr;
+  }
+
+  .work-grid--verspringend .work:nth-child(2) {
+    margin-top: 0;
+  }
+}

@@ -160,9 +160,11 @@
 
   <section class="section" id="diensten" aria-labelledby="diensten-titel">
     <div class="container">
-      <div class="section__head section__head--center">
-        <p class="eyebrow">Wij komen bij je thuis</p>
-        <h2 id="diensten-titel">Werken die wij voor je uitvoeren</h2>
+      <div class="section__head section__head--split">
+        <div>
+          <p class="eyebrow">Wij komen bij je thuis</p>
+          <h2 id="diensten-titel">Werken die wij voor je uitvoeren</h2>
+        </div>
         <p class="lead">Van &eacute;&eacute;n kamer tot je hele woning.</p>
       </div>
 
@@ -192,7 +194,7 @@
           </span>
         </a>
         <a class="service-card service-card--photo reveal" href="werken.html#raamdecoratie">
-          <img src="assets/img/foto/Gordijnen.jpeg" alt="Gordijnen op maat gemaakt en geplaatst door Lyssens" width="1600" height="1200" loading="lazy" decoding="async">
+          <img src="assets/img/foto/Lyssens-Raamdecoratie_3.jpg" alt="Raamdecoratie op maat geplaatst door Lyssens" width="1139" height="854" loading="lazy" decoding="async">
           <span class="service-card__body">
             <h3>Raamdecoratie</h3>
             <p>Gordijnen, rolgordijnen en zonwering. Opgemeten en geplaatst.</p>
@@ -209,7 +211,14 @@
     </div>
   </section>
 
-  <section class="section section--alt" id="zelf" aria-labelledby="zelf-titel">
+  <!-- WordPress: Afbeelding-blok, volledige breedte, met bijschrift. -->
+  <figure class="fotoband">
+    <img src="assets/img/foto/Gordijnen.jpeg" alt="Gordijnen op maat in een woonkamer, gemaakt en geplaatst door Lyssens" width="1600" height="1200" loading="lazy" decoding="async">
+    <figcaption>Gordijnen op maat, uit ons eigen atelier</figcaption>
+  </figure>
+
+  <section class="section section--olijf" id="zelf" aria-labelledby="zelf-titel">
+    <p class="kleurstaal" aria-hidden="true"><strong>Olijfgroen</strong>kleur van deze muur</p>
     <div class="container">
       <div class="selfservice">
         <div>
@@ -230,9 +239,10 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="proces-titel">
+  <section class="section section--oker" aria-labelledby="proces-titel">
+    <p class="kleurstaal kleurstaal--links" aria-hidden="true"><strong>Oker</strong>kleur van deze muur</p>
     <div class="container">
-      <div class="section__head section__head--center">
+      <div class="section__head">
         <p class="eyebrow">Zo gaat het in zijn werk</p>
         <h2 id="proces-titel">In drie stappen, zonder gedoe</h2>
       </div>
@@ -276,7 +286,7 @@
         <h2 id="realisaties-titel">Het verschil zie je pas als je het naast elkaar legt</h2>
       </div>
 
-      <div class="work-grid">
+      <div class="work-grid work-grid--verspringend">
         <figure class="work reveal">
           <div class="work__media">
             <img src="assets/img/foto/schilderwerken-lyssens-voor-na-1.jpg" alt="Woonkamer voor en na de schilderwerken door Lyssens" width="960" height="500" loading="lazy" decoding="async">
@@ -306,7 +316,8 @@
     </div>
   </section>
 
-  <section class="section" id="winkel" aria-labelledby="winkel-titel">
+  <section class="section section--terra" id="winkel" aria-labelledby="winkel-titel">
+    <p class="kleurstaal" aria-hidden="true"><strong>Terracotta</strong>kleur van deze muur</p>
     <div class="container split-2">
       <div>
         <p class="eyebrow">Onze winkel</p>
@@ -353,12 +364,17 @@
     </div>
   </section>
 
-  <section class="section section--tight" id="reviews" aria-labelledby="reviews-titel">
+  <section class="section" id="reviews" aria-labelledby="reviews-titel">
     <div class="container">
-      <h2 id="reviews-titel" class="strip-title">Wat klanten zeggen</h2>
-      <p class="text-center gap-after reviews__score">4,6 op 5 op Google</p>
+      <div class="section__head section__head--split">
+        <div>
+          <p class="eyebrow">Op Google</p>
+          <h2 id="reviews-titel">Wat klanten zeggen</h2>
+        </div>
+        <p class="score-groot"><strong>4,6</strong> op 5, gemiddeld</p>
+      </div>
 
-      <div class="reviews">
+      <div class="reviews reviews--uitgelicht">
         <blockquote class="review">
           <p class="review__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
           <p>Super service! Bart (zaakvoerder) denkt mee in termen van re&euml;le oplossingen, ook &lsquo;out of the box&rsquo;. Heel snelle, super professionele service, met een resultaat waar wij nog jaren gelukkig mee gaan zijn. Grote woonkamer in twee dagen super knap geschilderd! Echt wauw!</p>
