@@ -1720,40 +1720,306 @@ body:has(.winkel-vandaag) .topbar__inner {
   box-shadow: var(--shadow-s);
 }
 
-/* Vaste kolommen, zodat ook een enkele foto klein blijft. */
-.gallery--rij {
-  grid-template-columns: repeat(4, 1fr);
-}
+/* ---------- Wat wij uitvoeren ---------- */
 
-@media (max-width: 45rem) {
-  .gallery--rij {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.werk-fotos {
-  margin-top: var(--space-7);
-}
-
-/* Lege plaats in een fotorij, tot de zaak er zelf een foto in zet. */
-.gallery__leeg {
+/* Overzicht met fototegels bovenaan. */
+.werk-index {
   display: grid;
-  place-items: center;
-  aspect-ratio: 1 / 1;
-  padding: var(--space-3);
-  border: 2px dashed var(--line);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  list-style: none;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+}
+
+.werk-tegel {
+  position: relative;
+  display: block;
+  aspect-ratio: 5 / 2;
   border-radius: var(--radius-m);
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: var(--shadow-s);
+}
+
+.werk-tegel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.werk-tegel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(23 18 14 / 82%), rgb(23 18 14 / 10%) 65%);
+}
+
+.werk-tegel > span {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  display: grid;
+  gap: 0.1rem;
+  padding: var(--space-3) var(--space-4);
+  line-height: 1.25;
+}
+
+.werk-tegel strong {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+}
+
+.werk-tegel span span {
   font-size: var(--step-xs);
+  opacity: 0.88;
+}
+
+.werk-tegel:hover img,
+.werk-tegel:focus-visible img {
+  transform: scale(1.05);
+}
+
+/* Een werk: collage van foto's naast een korte tekst. */
+.werkblok__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.werkblok--flip .collage {
+  order: 2;
+}
+
+.werkblok__tekst > p:not(.eyebrow) {
+  font-size: var(--step-1);
+  line-height: 1.6;
+}
+
+.werkblok__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  margin-top: var(--space-5);
+}
+
+/* Een grote foto met tot drie kleine ernaast, zoals een Galerij-blok in WordPress. */
+.collage {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: minmax(0, 1fr);
+  gap: var(--space-3);
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.collage:not(:has(.collage__klein img)) {
+  grid-template-columns: 1fr;
+}
+
+.collage img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  border-radius: var(--radius-m);
+}
+
+.collage__groot {
+  box-shadow: var(--shadow-m);
+}
+
+.collage__klein {
+  display: grid;
+  grid-auto-rows: minmax(0, 1fr);
+  gap: var(--space-3);
+  height: 100%;
+  min-height: 0;
+}
+
+/* Meer details om open te klikken, zoals het Details-blok in WordPress. */
+.meer {
+  margin-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.meer summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
   font-weight: 700;
-  color: var(--ink-soft);
+  color: var(--accent-strong);
+  cursor: pointer;
+  list-style: none;
+}
+
+.meer summary::-webkit-details-marker {
+  display: none;
+}
+
+.meer summary::after {
+  content: "+";
+  font-size: 1.4em;
+  line-height: 1;
+  transition: transform var(--transition);
+}
+
+.meer[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.meer__inhoud {
+  padding-bottom: var(--space-4);
+}
+
+.meer__inhoud > * + * {
+  margin-top: var(--space-3);
+}
+
+/* Specialiteiten: drie kaarten naast elkaar. */
+.specials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+.special {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.special img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.special__body {
+  padding: var(--space-5);
+}
+
+.special__body h3 {
+  margin-bottom: var(--space-2);
+}
+
+.special .meer {
+  margin-top: var(--space-4);
+  border-bottom: 0;
+}
+
+/* Zo werken we: donkere band met twee kaarten en een klantcitaat. */
+.aanpak {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.aanpak__kaart {
+  padding: var(--space-6);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: var(--radius-m);
+  background: rgb(255 255 255 / 4%);
+}
+
+.aanpak__kaart p {
+  color: rgb(255 255 255 / 82%);
+}
+
+.aanpak__citaat {
+  max-width: 44rem;
+  margin: var(--space-8) auto 0;
   text-align: center;
 }
 
-.werk-fotos__titel {
-  margin: 0 0 var(--space-3);
+.aanpak__citaat p {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.4;
+  color: #fff;
+}
+
+.aanpak__citaat footer {
+  margin-top: var(--space-3);
   font-size: var(--step-s);
-  font-weight: 700;
-  color: var(--ink-soft);
+  color: var(--metal);
+}
+
+.aanpak__actie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-7);
+}
+
+@media (max-width: 62rem) {
+  .werkblok__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .werkblok--flip .collage {
+    order: 0;
+  }
+
+  .specials {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+  }
+
+  .aanpak {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 45rem) {
+  .werk-index {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .werk-tegel {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Bij een oneven aantal krijgt de laatste tegel de volle breedte. */
+  .werk-index li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .werk-index li:last-child:nth-child(odd) .werk-tegel {
+    aspect-ratio: 2 / 1;
+  }
+
+  .werk-tegel span span {
+    display: none;
+  }
+
+  .collage {
+    aspect-ratio: 1 / 1;
+  }
+
+  .werkblok__tekst > p:not(.eyebrow) {
+    font-size: var(--step-0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .werk-tegel img {
+    transition: none;
+  }
 }
 
 .checklist {
