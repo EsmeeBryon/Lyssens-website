@@ -199,7 +199,8 @@ function initKopschaduw() {
   window.addEventListener("scroll", zet, { passive: true });
 }
 
-/* Zoals "Vergroten bij klikken" van het Afbeelding-blok in WordPress. Geen foto's in links of banners. */
+/* Zoals "Vergroten bij klikken" van het Afbeelding-blok in WordPress. Geen foto's in links of banners.
+   Foto's uit dezelfde collage of galerij vormen een reeks waar je doorheen bladert. */
 function initVergroten() {
   const fotos = [...document.querySelectorAll("main img")].filter(
     (foto) => !foto.closest("a, button, .fotoband, .page-hero, .hero__stage, .person") && !/\.svg$/i.test(foto.getAttribute("src") || "")
@@ -209,31 +210,75 @@ function initVergroten() {
   const venster = document.createElement("dialog");
   venster.className = "lichtbak";
   venster.setAttribute("aria-label", "Vergrote foto");
-  venster.innerHTML = '<button class="lichtbak__sluit" type="button" aria-label="Sluiten">&times;</button><img alt=""><p class="lichtbak__tekst"></p>';
+  venster.innerHTML =
+    '<button class="lichtbak__sluit" type="button" aria-label="Sluiten">&times;</button>' +
+    '<button class="lichtbak__blader lichtbak__blader--vorige" type="button" aria-label="Vorige foto">&lsaquo;</button>' +
+    '<button class="lichtbak__blader lichtbak__blader--volgende" type="button" aria-label="Volgende foto">&rsaquo;</button>' +
+    '<img alt=""><p class="lichtbak__tekst"><span class="lichtbak__teller"></span><span class="lichtbak__alt"></span></p>';
   document.body.append(venster);
   const groot = venster.querySelector("img");
-  const tekst = venster.querySelector(".lichtbak__tekst");
+  const teller = venster.querySelector(".lichtbak__teller");
+  const uitleg = venster.querySelector(".lichtbak__alt");
+
+  let reeks = [];
+  let plek = 0;
+  const toon = (nieuw) => {
+    plek = (nieuw + reeks.length) % reeks.length;
+    const foto = reeks[plek];
+    groot.src = foto.currentSrc || foto.src;
+    groot.alt = foto.alt;
+    uitleg.textContent = foto.alt;
+    teller.textContent = reeks.length > 1 ? `${plek + 1} / ${reeks.length}` : "";
+    venster.toggleAttribute("data-reeks", reeks.length > 1);
+  };
 
   venster.querySelector(".lichtbak__sluit").addEventListener("click", () => venster.close());
+  venster.querySelector(".lichtbak__blader--vorige").addEventListener("click", () => toon(plek - 1));
+  venster.querySelector(".lichtbak__blader--volgende").addEventListener("click", () => toon(plek + 1));
   venster.addEventListener("click", (e) => {
     if (e.target === venster) venster.close();
   });
   venster.addEventListener("close", () => groot.removeAttribute("src"));
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && venster.open) venster.close();
+    if (!venster.open) return;
+    if (e.key === "Escape") venster.close();
+    if (e.key === "ArrowLeft" && reeks.length > 1) toon(plek - 1);
+    if (e.key === "ArrowRight" && reeks.length > 1) toon(plek + 1);
+  });
+
+  // Vegen op een gsm.
+  let startX = null;
+  groot.addEventListener("pointerdown", (e) => (startX = e.clientX));
+  groot.addEventListener("pointerup", (e) => {
+    if (startX === null || reeks.length < 2) return;
+    const verschil = e.clientX - startX;
+    startX = null;
+    if (Math.abs(verschil) > 40) toon(plek + (verschil < 0 ? 1 : -1));
   });
 
   fotos.forEach((foto) => {
+    const groep = foto.closest(".collage, .gallery, .work-grid, .hero__thumbs");
+    const leden = groep ? fotos.filter((f) => groep.contains(f)) : [foto];
+
     const knop = document.createElement("button");
     knop.type = "button";
     knop.className = "vergroot";
     knop.setAttribute("aria-label", `Vergroot de foto: ${foto.alt || "foto"}`);
     foto.replaceWith(knop);
     knop.append(foto);
+
+    // Eén rustig label per reeks, op de eerste foto.
+    if (leden.length > 2 && leden[0] === foto) {
+      const aantal = document.createElement("span");
+      aantal.className = "vergroot__aantal";
+      aantal.setAttribute("aria-hidden", "true");
+      aantal.textContent = `${leden.length} foto's`;
+      knop.append(aantal);
+    }
+
     knop.addEventListener("click", () => {
-      groot.src = foto.currentSrc || foto.src;
-      groot.alt = foto.alt;
-      tekst.textContent = foto.alt;
+      reeks = leden;
+      toon(leden.indexOf(foto));
       venster.showModal();
     });
   });

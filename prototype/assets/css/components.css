@@ -2832,34 +2832,28 @@ body:has(.winkel-vandaag) .topbar__inner {
   outline-offset: 3px;
 }
 
-/* Vier hoekjes: het bekende teken voor "groter maken". */
-.vergroot::after {
-  content: "";
+/* Geen teken op elke foto: de muis wordt een vergrootglas en de foto licht zacht op. */
+.vergroot img {
+  transition: filter var(--transition);
+}
+
+.vergroot:hover img {
+  filter: brightness(1.07) saturate(1.06);
+}
+
+/* Bij een reeks foto's één rustig label, zoals "4 foto's". */
+.vergroot__aantal {
   position: absolute;
-  right: 0.6rem;
-  bottom: 0.6rem;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  background: rgb(255 255 255 / 92%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317120e' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5'/%3E%3C/svg%3E") center / 1.05rem no-repeat;
-  box-shadow: var(--shadow-s);
-  opacity: 0;
-  transition: opacity var(--transition);
+  left: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: rgb(23 18 14 / 72%);
+  color: #fff;
+  font-size: var(--step-xs);
+  font-weight: 700;
   pointer-events: none;
-}
-
-.vergroot:hover::after,
-.vergroot:focus-visible::after {
-  opacity: 1;
-}
-
-/* Op een gsm bestaat er geen muis, dus daar staat het teken er altijd. */
-@media (hover: none) {
-  .vergroot::after {
-    opacity: 1;
-    width: 2rem;
-    height: 2rem;
-  }
+  backdrop-filter: blur(4px);
 }
 
 .lichtbak {
@@ -2890,24 +2884,71 @@ body:has(.winkel-vandaag) .topbar__inner {
   text-align: center;
 }
 
-.lichtbak__sluit {
+.lichtbak__sluit,
+.lichtbak__blader {
   position: fixed;
-  top: var(--space-4);
-  right: var(--space-4);
   display: grid;
   place-content: center;
   width: 2.75rem;
   height: 2.75rem;
   border: 0;
   border-radius: 50%;
-  background: #fff;
+  background: rgb(255 255 255 / 92%);
   color: var(--ink);
   font-size: 1.6rem;
   line-height: 1;
   cursor: pointer;
 }
 
-.lichtbak__sluit:focus-visible {
+.lichtbak__sluit {
+  top: var(--space-4);
+  right: var(--space-4);
+}
+
+.lichtbak__blader {
+  top: 50%;
+  translate: 0 -50%;
+  font-size: 2rem;
+}
+
+.lichtbak__blader--vorige {
+  left: var(--space-4);
+}
+
+.lichtbak__blader--volgende {
+  right: var(--space-4);
+}
+
+.lichtbak:not([data-reeks]) .lichtbak__blader {
+  display: none;
+}
+
+/* Op een gsm blader je met vegen; de knoppen zakken dan naar onder, uit de foto. */
+@media (hover: none) and (max-width: 45rem) {
+  .lichtbak__blader {
+    top: auto;
+    bottom: var(--space-4);
+    translate: none;
+  }
+}
+
+.lichtbak img {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lichtbak__teller {
+  margin-right: var(--space-3);
+  font-weight: 700;
+}
+
+.lichtbak__teller:empty {
+  display: none;
+}
+
+.lichtbak__sluit:focus-visible,
+.lichtbak__blader:focus-visible {
   outline: 3px solid var(--highlight);
   outline-offset: 3px;
 }
