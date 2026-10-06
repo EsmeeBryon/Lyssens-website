@@ -545,10 +545,6 @@
   rotate: var(--photo-tilt);
 }
 
-.photo-card:hover {
-  transform: translateY(-4px) rotate(0deg);
-}
-
 .badge-circle {
   position: absolute;
   left: -1.5rem;
@@ -1062,12 +1058,6 @@
   border-radius: var(--radius-m);
   overflow: hidden;
   box-shadow: var(--shadow-s);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.work:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-m);
 }
 
 .work__media {
@@ -1080,23 +1070,19 @@
   object-fit: cover;
 }
 
-.work__tag {
-  position: absolute;
-  /* Onderaan, want de foto's dragen zelf al "voor" en "na" bovenaan. */
-  bottom: var(--space-3);
-  left: var(--space-3);
-  padding: 0.35rem 0.9rem;
-  border-radius: var(--radius-pill);
-  background: rgb(27 22 19 / 78%);
-  color: #fff;
+.work figcaption {
+  padding: var(--space-5);
+}
+
+/* Een label als gewone tekst: een pil op de foto leek een knop. */
+.work figcaption .work__tag {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--accent);
   font-size: var(--step-xs);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.work figcaption {
-  padding: var(--space-5);
 }
 
 .work figcaption strong {
@@ -1307,11 +1293,6 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
   overflow: hidden;
-  transition: transform var(--transition);
-}
-
-.person:hover {
-  transform: translateY(-4px);
 }
 
 .person img {
