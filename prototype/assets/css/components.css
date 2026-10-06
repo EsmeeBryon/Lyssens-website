@@ -711,7 +711,10 @@
 }
 
 .service-card__more {
+  align-self: flex-start;
   margin-top: auto;
+  padding-bottom: 2px;
+  border-bottom: 2px solid currentColor;
   font-weight: 700;
   color: var(--accent-strong);
 }
@@ -904,19 +907,15 @@
   text-decoration: none;
 }
 
-.linklist a::after {
-  content: "\2192";
-  color: var(--accent-strong);
-  transition: transform var(--transition);
+.linklist a {
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
 }
 
-.linklist a:hover {
+.linklist a:hover,
+.linklist a:focus-visible {
   border-color: var(--accent);
+  background: var(--accent-soft);
   color: var(--accent-strong);
-}
-
-.linklist a:hover::after {
-  transform: translateX(3px);
 }
 
 .calc {
@@ -1199,16 +1198,16 @@
   text-decoration: none;
   font-size: var(--step-s);
   font-weight: 600;
+  box-shadow: var(--shadow-s);
+  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
 }
 
-.jumpnav a::after {
-  content: "\2193";
-  color: var(--accent-strong);
-}
-
-.jumpnav a:hover {
+.jumpnav a:hover,
+.jumpnav a:focus-visible {
   border-color: var(--accent);
+  background: var(--accent-soft);
   color: var(--accent-strong);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 62rem) {
@@ -1743,30 +1742,26 @@ body:has(.winkel-vandaag) .topbar__inner {
 }
 
 .werk-index ul {
+  display: grid;
+  gap: var(--space-2);
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.werk-index li + li {
-  border-top: 1px solid var(--line);
-}
-
+/* Een zachte kaart: de vorm zelf toont dat je kan klikken. */
 .werk-index a {
-  display: grid;
-  grid-template-columns: 2rem 1fr auto;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  box-shadow: var(--shadow-s);
   color: var(--ink);
   text-decoration: none;
-}
-
-/* Altijd zichtbaar: zo zie je ook op een gsm dat je kan klikken. */
-.werk-index a::after {
-  content: "\2193";
-  color: var(--accent);
-  transition: transform var(--transition);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
 }
 
 .werk-index__nr {
@@ -1783,22 +1778,23 @@ body:has(.winkel-vandaag) .topbar__inner {
   transition: color var(--transition);
 }
 
+.werk-index a:hover,
+.werk-index a:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
 .werk-index a:hover strong,
 .werk-index a:focus-visible strong {
   color: var(--accent-strong);
-}
-
-.werk-index a:hover::after,
-.werk-index a:focus-visible::after {
-  transform: translateY(3px);
 }
 
 /* Op gsm: alle werken in twee kolommen, zonder groepstitels. */
 @media (max-width: 45rem) {
   .werk-index {
     grid-template-columns: 1fr 1fr;
-    column-gap: var(--space-4);
-    row-gap: 0;
+    gap: var(--space-2);
     margin-top: var(--space-5);
     padding-top: 0;
     border-top: 0;
@@ -1813,14 +1809,9 @@ body:has(.winkel-vandaag) .topbar__inner {
     display: none;
   }
 
-  .werk-index li,
-  .werk-index li + li {
-    border-top: 1px solid var(--line);
-  }
-
   .werk-index a {
-    grid-template-columns: 1.5rem 1fr auto;
-    gap: var(--space-1);
+    gap: var(--space-2);
+    padding: 0.6rem 0.75rem;
   }
 
   .werk-index strong {

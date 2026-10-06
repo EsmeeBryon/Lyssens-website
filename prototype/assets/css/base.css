@@ -231,10 +231,13 @@ ul {
   text-decoration: none;
   border-bottom: 2px solid var(--accent);
   padding-bottom: 2px;
+  transition: color var(--transition), border-color var(--transition);
 }
 
-.link-arrow:hover {
-  gap: var(--space-4);
+.link-arrow:hover,
+.link-arrow:focus-visible {
+  color: var(--accent-strong);
+  border-bottom-color: var(--accent-strong);
 }
 
 /* Alleen verbergen wanneer JavaScript draait, zodat inhoud altijd leesbaar blijft. */
