@@ -33,9 +33,18 @@ function initCalculator() {
     muren: "Dit is een richtcijfer. We rekenen met ongeveer 10 m² per liter. Zit er een raam of deur in de muur, dan heb je iets minder nodig. In de winkel kijken we er graag samen nog eens naar.",
   };
 
+  // Mensen kennen hun klus beter dan het aantal lagen; daar rekenen we zelf mee.
+  const KLUS = {
+    weet: { lagen: 2, zin: "wat meestal nodig is" },
+    zelfde: { lagen: 1, zin: "wat bij dezelfde kleur vaak volstaat" },
+    anders: { lagen: 2, zin: "zodat de oude kleur niet doorschijnt" },
+    nieuw: { lagen: 2, zin: "met eerst nog een grondlaag, want een kale muur zuigt de verf op" },
+  };
+
   const update = () => {
     const soort = form.elements.soort.value;
-    const lagen = number("lagen") || 2;
+    const klus = KLUS[form.elements.klus.value] || KLUS.weet;
+    const lagen = klus.lagen;
     let netto = 0;
 
     form.querySelectorAll("[data-soort]").forEach((deel) => (deel.hidden = deel.dataset.soort !== soort));
@@ -65,7 +74,7 @@ function initCalculator() {
     const liter = Math.max(0.5, Math.ceil(((netto * lagen) / 10) * 2) / 2);
     result.innerHTML =
       `<strong>Ongeveer ${liter.toLocaleString("nl-BE")} liter</strong>` +
-      `Voor zo'n ${Math.max(1, Math.round(netto))} m² in ${lagen} ${lagen === 1 ? "laag" : "lagen"}. Kom gerust langs met dit cijfer, ` +
+      `Voor zo'n ${Math.max(1, Math.round(netto))} m² in ${lagen} ${lagen === 1 ? "laag" : "lagen"}, ${klus.zin}. Kom gerust langs met dit cijfer, ` +
       `dan mengen we je kleur terwijl je wacht.`;
   };
 
