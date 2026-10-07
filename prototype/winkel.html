@@ -108,30 +108,34 @@
       <div>
         <p class="eyebrow">01</p>
         <h2 id="verf-titel">Verf</h2>
-        <p>&ldquo;We weten wat we verkopen door de ervaring.&rdquo;</p>
-        <p>Van een testpot van 250 ml tot een stevige verfpot van 15 liter: je koopt het allemaal in onze winkel. Met onze mengmachine maken we meer dan <strong>70.000 kleuren</strong>. Alles is mogelijk. Zo krijg je dezelfde kleur verf voor je radiator als die op je muren.</p>
-        <p>Decoratie Lyssens gebruikt enkel de beste merken en is daarom <strong>verdeler van Sigma</strong>. Daarnaast werken we met:</p>
-        <ul class="chiplist">
-          <li>Mathys</li>
-          <li>Histor</li>
-          <li>Histor One</li>
-          <li>Trimetal</li>
-          <li>Lucite</li>
-          <li>CBS</li>
-          <li>en nog veel meer</li>
-        </ul>
+        <p>Van een testpot van 250 ml tot een pot van 15 liter. Met onze mengmachine maken we meer dan <strong>70.000 kleuren</strong>, zodat je radiator dezelfde kleur krijgt als je muur. Lyssens is <strong>verdeler van Sigma</strong>.</p>
 
-        <h3 class="stack--lg">Schildersmateriaal en toebehoren</h3>
-        <ul class="chiplist">
-          <li>Plamuur</li>
-          <li>Verfborstels groot en klein</li>
-          <li>Schuurmiddelen</li>
-          <li>Afplaktape &amp; afdekmateriaal</li>
-          <li>Verfbakken</li>
-          <li>Handschoenen</li>
-          <li>Siliconen en schilderskit</li>
-        </ul>
-        <p class="stack--sm">Kortom: alles wat je nodig hebt om je schilderklus te klaren. Vaak gebruikte merken zijn Storch, Progold, 3M, Sia en Tesa.</p>
+        <details class="meer">
+          <summary>Meer details</summary>
+          <div class="meer__inhoud">
+            <h3>Ook verkrijgbaar</h3>
+            <ul class="chiplist">
+              <li>Mathys</li>
+              <li>Histor</li>
+              <li>Histor One</li>
+              <li>Trimetal</li>
+              <li>Lucite</li>
+              <li>CBS</li>
+              <li>en nog veel meer</li>
+            </ul>
+            <h3>Schildersmateriaal en toebehoren</h3>
+            <ul class="chiplist">
+              <li>Plamuur</li>
+              <li>Verfborstels groot en klein</li>
+              <li>Schuurmiddelen</li>
+              <li>Afplaktape &amp; afdekmateriaal</li>
+              <li>Verfbakken</li>
+              <li>Handschoenen</li>
+              <li>Siliconen en schilderskit</li>
+            </ul>
+            <p>Vaak gebruikte merken zijn Storch, Progold, 3M, Sia en Tesa.</p>
+          </div>
+        </details>
       </div>
       <figure class="photo-card photo-card--wide">
         <img src="assets/img/foto/Lyssens_Winkel4.jpeg" alt="Verfrekken in de winkel van Lyssens" width="640" height="854" loading="lazy" decoding="async">
@@ -144,22 +148,53 @@
       <div class="section__head">
         <p class="eyebrow">Handig voor je langskomt</p>
         <h2 id="calc-titel">Hoeveel verf heb je nodig?</h2>
-        <p class="lead">Meet je kamer op en reken hier snel uit hoeveel liter je ongeveer nodig hebt. Zo weet je op voorhand wat je moet meenemen.</p>
+        <p class="lead">Reken hier snel uit hoeveel liter je ongeveer nodig hebt, voor een hele kamer of voor een paar losse muren. Zo weet je op voorhand wat je moet meenemen.</p>
       </div>
 
       <form class="panel calc" data-calc novalidate>
-        <div class="field">
-          <label for="lengte">Lengte van de kamer (m)</label>
-          <input id="lengte" name="lengte" type="number" min="0" step="0.1" inputmode="decimal" placeholder="5">
+        <fieldset class="fieldset-reset field--full">
+          <legend class="field__hint">Wat wil je schilderen?</legend>
+          <div class="choice-row">
+            <label class="choice"><input type="radio" name="soort" value="kamer" checked><span>Een hele kamer</span></label>
+            <label class="choice"><input type="radio" name="soort" value="muren"><span>E&eacute;n of enkele muren</span></label>
+          </div>
+        </fieldset>
+
+        <div class="calc__deel" data-soort="kamer">
+          <div class="field">
+            <label for="lengte">Lengte van de kamer (m)</label>
+            <input id="lengte" name="lengte" type="number" min="0" step="0.1" inputmode="decimal" placeholder="5">
+          </div>
+          <div class="field">
+            <label for="breedte">Breedte van de kamer (m)</label>
+            <input id="breedte" name="breedte" type="number" min="0" step="0.1" inputmode="decimal" placeholder="4">
+          </div>
+          <div class="field">
+            <label for="hoogte">Hoogte van de muren (m)</label>
+            <input id="hoogte" name="hoogte" type="number" min="0" step="0.1" inputmode="decimal" placeholder="2.5">
+          </div>
+          <div class="choice-row">
+            <label class="choice"><input type="checkbox" name="plafond"><span>Het plafond mag erbij</span></label>
+          </div>
         </div>
-        <div class="field">
-          <label for="breedte">Breedte van de kamer (m)</label>
-          <input id="breedte" name="breedte" type="number" min="0" step="0.1" inputmode="decimal" placeholder="4">
+
+        <div class="calc__deel" data-soort="muren" hidden>
+          <div class="calc__muren" data-muren>
+            <div class="calc__muur" data-muur role="group" aria-labelledby="muur1-naam">
+              <div class="calc__muurkop"><span id="muur1-naam" data-muur-naam>Muur 1</span></div>
+              <div class="field">
+                <label for="muur1-breedte">Breedte (m)</label>
+                <input id="muur1-breedte" data-muur-breedte type="number" min="0" step="0.1" inputmode="decimal" placeholder="4">
+              </div>
+              <div class="field">
+                <label for="muur1-hoogte">Hoogte (m)</label>
+                <input id="muur1-hoogte" data-muur-hoogte type="number" min="0" step="0.1" inputmode="decimal" placeholder="2.5">
+              </div>
+            </div>
+          </div>
+          <p class="flush"><button class="btn btn--ghost" type="button" data-muur-erbij>Nog een muur</button></p>
         </div>
-        <div class="field">
-          <label for="hoogte">Hoogte van de muren (m)</label>
-          <input id="hoogte" name="hoogte" type="number" min="0" step="0.1" inputmode="decimal" placeholder="2.5">
-        </div>
+
         <div class="field">
           <label for="lagen">Aantal lagen</label>
           <select id="lagen" name="lagen">
@@ -168,11 +203,9 @@
             <option value="3">3 lagen</option>
           </select>
         </div>
-        <div class="choice-row field--full">
-          <label class="choice"><input type="checkbox" name="plafond"><span>Het plafond mag erbij</span></label>
-        </div>
+
         <p class="calc__result" data-calc-result role="status">Vul je afmetingen in, dan rekenen we het meteen uit.</p>
-        <p class="field__hint field--full">Dit is een richtcijfer. We rekenen met ongeveer 10 m&sup2; per liter en houden al rekening met ramen en deuren. In de winkel kijken we er graag samen nog eens naar.</p>
+        <p class="field__hint field--full" data-calc-uitleg>Dit is een richtcijfer. We rekenen met ongeveer 10 m&sup2; per liter en houden al rekening met ramen en deuren. In de winkel kijken we er graag samen nog eens naar.</p>
       </form>
     </div>
   </section>
@@ -182,17 +215,23 @@
       <div>
         <p class="eyebrow">02</p>
         <h2 id="behang-titel">Behang</h2>
-        <p>&ldquo;Laat je interieur tot leven komen met de verschillende soorten behang.&rdquo;</p>
-        <p>Voor iedereen wat wils: jong of oud, modern of klassiek, gedurfd of exclusief. Uit een <strong>honderdtal behangboeken</strong> kan je kiezen om je wens werkelijkheid te laten worden. Of je nu posterbehang, vliesbehang of houtvezelbehang wil, je vindt het hier.</p>
-        <ul class="chiplist">
-          <li>Arte</li>
-          <li>Flamant</li>
-          <li>Hooked On Walls</li>
-          <li>Live In</li>
-          <li>Meistervlies</li>
-          <li>Komar</li>
-          <li>en nog veel meer</li>
-        </ul>
+        <p>Jong of oud, modern of klassiek: je kiest uit een <strong>honderdtal behangboeken</strong>, van vlies- en posterbehang tot houtvezelbehang.</p>
+
+        <details class="meer">
+          <summary>Meer details</summary>
+          <div class="meer__inhoud">
+            <h3>Merken</h3>
+            <ul class="chiplist">
+              <li>Arte</li>
+              <li>Flamant</li>
+              <li>Hooked On Walls</li>
+              <li>Live In</li>
+              <li>Meistervlies</li>
+              <li>Komar</li>
+              <li>en nog veel meer</li>
+            </ul>
+          </div>
+        </details>
       </div>
       <figure class="photo-card photo-card--wide">
         <img src="assets/img/foto/Behang.jpg" alt="Behangcollectie in de winkel van Lyssens" width="960" height="529" loading="lazy" decoding="async">
@@ -205,21 +244,26 @@
       <div>
         <p class="eyebrow">03</p>
         <h2 id="raam-titel">Raamdecoratie</h2>
-        <p>&ldquo;Voor een groot assortiment aan raamdecoratie moet je bij ons zijn.&rdquo;</p>
-        <h3>Gordijnen, overgordijnen en meubelstoffen</h3>
-        <ul class="chiplist">
-          <li>Kob&eacute;</li>
-          <li>Essente</li>
-          <li>Unland</li>
-          <li>Loft 79</li>
-          <li>Oer</li>
-          <li>Vriesco International</li>
-          <li>Live In</li>
-          <li>Drapilux</li>
-        </ul>
-        <h3 class="stack--lg">Raambekleding</h3>
-        <p>Rolgordijnen, zonwering, vouwgordijnen, Japanse panelen, jaloezie&euml;n in hout of aluminium en lamellen, onder meer van Copa en Lecluyse.</p>
-        <p class="note">Alles wordt op maat gemaakt in ons eigen atelier. Binnen 10 km rond Merksem meten en plaatsen we gratis.</p>
+        <p>Gordijnen, overgordijnen en raambekleding, op maat gemaakt in ons eigen atelier. Binnen 10 km rond Merksem meten en plaatsen we gratis.</p>
+
+        <details class="meer">
+          <summary>Meer details</summary>
+          <div class="meer__inhoud">
+            <h3>Gordijnen, overgordijnen en meubelstoffen</h3>
+            <ul class="chiplist">
+              <li>Kob&eacute;</li>
+              <li>Essente</li>
+              <li>Unland</li>
+              <li>Loft 79</li>
+              <li>Oer</li>
+              <li>Vriesco International</li>
+              <li>Live In</li>
+              <li>Drapilux</li>
+            </ul>
+            <h3>Raambekleding</h3>
+            <p>Rolgordijnen, zonwering, vouwgordijnen, Japanse panelen, jaloezie&euml;n in hout of aluminium en lamellen, onder meer van Copa en Lecluyse.</p>
+          </div>
+        </details>
       </div>
       <figure class="photo-card photo-card--wide">
         <img src="assets/img/foto/Lyssens_Winkel2.jpeg" alt="Raamdecoratie en stoffen in de winkel van Lyssens" width="854" height="640" loading="lazy" decoding="async">
@@ -232,16 +276,21 @@
       <div>
         <p class="eyebrow">04</p>
         <h2 id="vloer-titel">Vloerbekleding</h2>
-        <p>&ldquo;Bij ons kun je van de vloer eten.&rdquo;</p>
-        <p>Het uitzoeken van de juiste vloer is een leuke maar uitdagende klus. Met een vloer van <strong>Forbo, Tarkett of Gerflor</strong> kies je voor duurzaamheid en kwaliteit. Deze merken bieden de mooiste en meest inspirerende vloeren voor je woning.</p>
-        <ul class="chiplist">
-          <li>Vinylvloeren</li>
-          <li>LVT-vloeren</li>
-          <li>Parket (massief hout)</li>
-          <li>Laminaat</li>
-          <li>Tapijt</li>
-          <li>en nog veel meer</li>
-        </ul>
+        <p>Een vloer kies je niet elke dag. Met <strong>Forbo, Tarkett of Gerflor</strong> kies je voor kwaliteit die jaren meegaat, en in de winkel zoeken we samen welke past.</p>
+
+        <details class="meer">
+          <summary>Meer details</summary>
+          <div class="meer__inhoud">
+            <ul class="chiplist">
+              <li>Vinylvloeren</li>
+              <li>LVT-vloeren</li>
+              <li>Parket (massief hout)</li>
+              <li>Laminaat</li>
+              <li>Tapijt</li>
+              <li>en nog veel meer</li>
+            </ul>
+          </div>
+        </details>
       </div>
       <figure class="photo-card photo-card--wide">
         <img src="assets/img/foto/WhatsApp-Image-2021-01-18-at-22.55.25.jpeg" alt="Vloerstalen in de winkel van Lyssens" width="1600" height="1200" loading="lazy" decoding="async">
@@ -254,21 +303,26 @@
       <div>
         <p class="eyebrow">05</p>
         <h2 id="acc-titel">Woonaccessoires</h2>
-        <h3>Op maat</h3>
-        <p>Voor (sier)kussens en tafellakens in alle maten, geuren en kleuren ben je bij Lyssens aan het juiste adres. Deze worden voorbereid in ons eigen atelier.</p>
-        <p>Je badhanddoek in dezelfde kleur als je badmat? Dat kan. Ook badmatten, handdoeken en wc-matten van <strong>Rhomtuft</strong> ontbreken niet. Je kiest zelf vorm, afmeting, kleur en materiaal: uit 45 collecties en wel 99 verschillende kleuren. Theenappen, sier- en tafellopers horen er ook bij, met een vaste collectie die je eveneens op maat kan laten maken.</p>
-        <p class="note">&ldquo;Het assortiment verandert regelmatig. Wil je zien welke leuke dingen we in huis hebben? Kom dan naar de winkel.&rdquo;</p>
-        <h3 class="stack--lg">Een greep uit ons aanbod</h3>
-        <ul class="chiplist">
-          <li>Handgemaakte kaarsen</li>
-          <li>Kussens met dieren</li>
-          <li>Windlichten</li>
-          <li>Vazen</li>
-          <li>Bloempotten</li>
-          <li>Fotokaders</li>
-          <li>Dekens</li>
-          <li>en nog veel meer</li>
-        </ul>
+        <p>Kussens, tafellakens en badtextiel op maat uit ons eigen atelier, en een aanbod dat regelmatig wisselt. Kom gerust eens kijken wat er nu in huis is.</p>
+
+        <details class="meer">
+          <summary>Meer details</summary>
+          <div class="meer__inhoud">
+            <h3>Op maat</h3>
+            <p>(Sier)kussens en tafellakens in alle maten en kleuren. Badmatten, handdoeken en wc-matten van <strong>Rhomtuft</strong> kies je zelf in vorm, maat en materiaal, uit 45 collecties en 99 kleuren. Ook theenappen, sier- en tafellopers laten we op maat maken.</p>
+            <h3>Een greep uit ons aanbod</h3>
+            <ul class="chiplist">
+              <li>Handgemaakte kaarsen</li>
+              <li>Kussens met dieren</li>
+              <li>Windlichten</li>
+              <li>Vazen</li>
+              <li>Bloempotten</li>
+              <li>Fotokaders</li>
+              <li>Dekens</li>
+              <li>en nog veel meer</li>
+            </ul>
+          </div>
+        </details>
       </div>
       <figure class="photo-card photo-card--wide">
         <img src="assets/img/foto/Accessoires-1.jpeg" alt="Woonaccessoires in de winkel van Lyssens" width="1600" height="1200" loading="lazy" decoding="async">
@@ -281,28 +335,34 @@
       <div>
         <p class="eyebrow">06</p>
         <h2 id="kuis-titel">Kuis &amp; drogisterij</h2>
-        <p>&ldquo;Met een goed product kuist iedereen graag.&rdquo; Alles wat een goede drogisterij te bieden heeft, vind je bij ons.</p>
-        <h3>Voor elke klus in en rond het huis</h3>
-        <ul class="chiplist">
-          <li>Vloeren</li>
-          <li>Plastic reinigen</li>
-          <li>Aluminium reinigen</li>
-          <li>Onkruid verdelgen</li>
-          <li>Wasmachines</li>
-          <li>Antivries</li>
-          <li>Kleding ontvlekken</li>
-          <li>Ontgeuren</li>
-          <li>Mierenverdelging</li>
-        </ul>
-        <h3 class="stack--lg">Ook te verkrijgen</h3>
-        <ul class="chiplist">
-          <li>White spirit</li>
-          <li>Ammoniak</li>
-          <li>Gedemineraliseerd water</li>
-          <li>Azijnzuur</li>
-          <li>Lampenolie</li>
-        </ul>
-        <p class="stack--sm">Merken: een groot assortiment van HG en Berdy, aangevuld met Lamont, RS en Riem.</p>
+        <p>Alles wat een goede drogisterij te bieden heeft, voor elke klus in en rond het huis. Met een groot aanbod van <strong>HG en Berdy</strong>.</p>
+
+        <details class="meer">
+          <summary>Meer details</summary>
+          <div class="meer__inhoud">
+            <h3>Voor elke klus</h3>
+            <ul class="chiplist">
+              <li>Vloeren</li>
+              <li>Plastic reinigen</li>
+              <li>Aluminium reinigen</li>
+              <li>Onkruid verdelgen</li>
+              <li>Wasmachines</li>
+              <li>Antivries</li>
+              <li>Kleding ontvlekken</li>
+              <li>Ontgeuren</li>
+              <li>Mierenverdelging</li>
+            </ul>
+            <h3>Ook te verkrijgen</h3>
+            <ul class="chiplist">
+              <li>White spirit</li>
+              <li>Ammoniak</li>
+              <li>Gedemineraliseerd water</li>
+              <li>Azijnzuur</li>
+              <li>Lampenolie</li>
+            </ul>
+            <p>Naast HG en Berdy ook Lamont, RS en Riem.</p>
+          </div>
+        </details>
       </div>
       <figure class="photo-card photo-card--wide">
         <img src="assets/img/foto/Kuisproducten.jpg" alt="Kuis- en drogisterijproducten in de winkel van Lyssens" width="960" height="462" loading="lazy" decoding="async">
@@ -315,13 +375,18 @@
       <div>
         <p class="eyebrow">07</p>
         <h2 id="beslag-titel">Deur- en meubelbeslag</h2>
-        <p>&ldquo;Met Dauby ben je altijd gesteld.&rdquo;</p>
-        <ul class="checklist">
-          <li>Designerklinken</li>
-          <li>Een groot assortiment binnen- en buitendeurbeslag</li>
-          <li>Soorten beslag: binnendeur, buitendeur, meubel en raam</li>
-          <li>Materialen: zwart, roest, smeedijzer, roest epoxy, ijzer en meer</li>
-        </ul>
+        <p>Klinken en beslag van <strong>Dauby</strong> voor binnendeur, buitendeur, meubel en raam, van strak design tot smeedijzer.</p>
+
+        <details class="meer">
+          <summary>Meer details</summary>
+          <div class="meer__inhoud">
+            <ul class="checklist">
+              <li>Designerklinken</li>
+              <li>Een groot assortiment binnen- en buitendeurbeslag</li>
+              <li>Materialen: zwart, roest, smeedijzer, roest epoxy, ijzer en meer</li>
+            </ul>
+          </div>
+        </details>
       </div>
       <figure class="photo-card photo-card--wide">
         <img src="assets/img/foto/Meubebeslag-1.jpeg" alt="Deur- en meubelbeslag van Dauby bij Lyssens" width="1600" height="1200" loading="lazy" decoding="async">
@@ -334,8 +399,7 @@
       <div>
         <p class="eyebrow">08</p>
         <h2 id="tapijt-titel">Tapijtreiniger huren</h2>
-        <p>&ldquo;Wanneer een stofzuiger niet voldoet.&rdquo;</p>
-        <p>Een geweldige tapijtreiniger kan je bij ons huren. Je neemt de machine mee naar huis voor een bepaalde tijd en doet er een vezeldiepe reiniging mee van kamerbreed tapijt, bekleding of bijvoorbeeld autostoelen.</p>
+        <p>Als een stofzuiger niet volstaat. Je neemt de machine een tijdje mee naar huis voor een vezeldiepe reiniging van kamerbreed tapijt, bekleding of autostoelen.</p>
         <p class="section__more section__more--left">
           <a class="btn btn--primary" href="tel:+3236445206">Bel voor beschikbaarheid</a>
         </p>
@@ -351,18 +415,23 @@
       <div>
         <p class="eyebrow">09</p>
         <h2 id="droog-titel">Droogkuis &amp; wasserij</h2>
-        <p>&ldquo;Kuis is de hoogste graad.&rdquo;</p>
-        <p>Al jaren biedt Lyssens ook een droogkuis- en wasserijservice aan, aan dezelfde toonbank. Wassen, droogkuis, retouches en stoppage: de mogelijkheden houden niet op.</p>
-        <h3>Dit mag je gerust binnenbrengen</h3>
-        <ul class="chiplist">
-          <li>Lakens</li>
-          <li>Beddengoed</li>
-          <li>Hemden op kapstok of geplooid</li>
-          <li>Lederen vesten en jassen</li>
-          <li>Bruidskledij en communiekleding</li>
-          <li>Muur- en vloertapijten</li>
-          <li>en nog veel meer</li>
-        </ul>
+        <p>Wassen, droogkuis, retouches en stoppage, aan dezelfde toonbank als de verf. Al jaren een vaste waarde in Merksem.</p>
+
+        <details class="meer">
+          <summary>Meer details</summary>
+          <div class="meer__inhoud">
+            <h3>Dit mag je gerust binnenbrengen</h3>
+            <ul class="chiplist">
+              <li>Lakens</li>
+              <li>Beddengoed</li>
+              <li>Hemden op kapstok of geplooid</li>
+              <li>Lederen vesten en jassen</li>
+              <li>Bruidskledij en communiekleding</li>
+              <li>Muur- en vloertapijten</li>
+              <li>en nog veel meer</li>
+            </ul>
+          </div>
+        </details>
       </div>
       <figure class="photo-card photo-card--wide">
         <img src="assets/img/foto/Droogkuis.jpg" alt="Droogkuis en wasserij bij Lyssens" width="960" height="290" loading="lazy" decoding="async">

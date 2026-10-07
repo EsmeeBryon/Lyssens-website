@@ -23,32 +23,91 @@ function initCalculator() {
   if (!form) return;
 
   const result = form.querySelector("[data-calc-result]");
-  const number = (name) => parseFloat(form.elements[name].value.replace(",", ".")) || 0;
+  const uitleg = form.querySelector("[data-calc-uitleg]");
+  const muren = form.querySelector("[data-muren]");
+  const getal = (veld) => parseFloat(String(veld.value).replace(",", ".")) || 0;
+  const number = (name) => getal(form.elements[name]);
+
+  const UITLEG = {
+    kamer: "Dit is een richtcijfer. We rekenen met ongeveer 10 m² per liter en houden al rekening met ramen en deuren. In de winkel kijken we er graag samen nog eens naar.",
+    muren: "Dit is een richtcijfer. We rekenen met ongeveer 10 m² per liter. Zit er een raam of deur in de muur, dan heb je iets minder nodig. In de winkel kijken we er graag samen nog eens naar.",
+  };
 
   const update = () => {
-    const lengte = number("lengte");
-    const breedte = number("breedte");
-    const hoogte = number("hoogte");
+    const soort = form.elements.soort.value;
     const lagen = number("lagen") || 2;
+    let netto = 0;
 
-    if (!lengte || !breedte || !hoogte) {
-      result.innerHTML = "Vul je afmetingen in, dan rekenen we het meteen uit.";
-      return;
+    form.querySelectorAll("[data-soort]").forEach((deel) => (deel.hidden = deel.dataset.soort !== soort));
+    uitleg.textContent = UITLEG[soort];
+
+    if (soort === "kamer") {
+      const lengte = number("lengte");
+      const breedte = number("breedte");
+      const hoogte = number("hoogte");
+      if (!lengte || !breedte || !hoogte) {
+        result.innerHTML = "Vul je afmetingen in, dan rekenen we het meteen uit.";
+        return;
+      }
+      let oppervlakte = 2 * (lengte + breedte) * hoogte;
+      if (form.elements.plafond.checked) oppervlakte += lengte * breedte;
+      netto = oppervlakte * 0.88;
+    } else {
+      muren.querySelectorAll("[data-muur]").forEach((muur) => {
+        netto += getal(muur.querySelector("[data-muur-breedte]")) * getal(muur.querySelector("[data-muur-hoogte]"));
+      });
+      if (!netto) {
+        result.innerHTML = "Vul de breedte en hoogte van je muur in, dan rekenen we het meteen uit.";
+        return;
+      }
     }
 
-    let oppervlakte = 2 * (lengte + breedte) * hoogte;
-    if (form.elements.plafond.checked) oppervlakte += lengte * breedte;
-
-    const netto = oppervlakte * 0.88;
-    const liter = Math.ceil(((netto * lagen) / 10) * 2) / 2;
-
+    const liter = Math.max(0.5, Math.ceil(((netto * lagen) / 10) * 2) / 2);
     result.innerHTML =
       `<strong>Ongeveer ${liter.toLocaleString("nl-BE")} liter</strong>` +
-      `Voor zo'n ${Math.round(netto)} m² in ${lagen} lagen. Kom gerust langs met dit cijfer, ` +
+      `Voor zo'n ${Math.max(1, Math.round(netto))} m² in ${lagen} ${lagen === 1 ? "laag" : "lagen"}. Kom gerust langs met dit cijfer, ` +
       `dan mengen we je kleur terwijl je wacht.`;
   };
 
+  // Elke extra muur krijgt eigen, unieke velden zodat de labels blijven kloppen.
+  let teller = 1;
+  form.querySelector("[data-muur-erbij]").addEventListener("click", () => {
+    teller += 1;
+    const nieuw = muren.querySelector("[data-muur]").cloneNode(true);
+    nieuw.querySelectorAll("input").forEach((veld) => {
+      const deel = veld.hasAttribute("data-muur-breedte") ? "breedte" : "hoogte";
+      veld.id = `muur${teller}-${deel}`;
+      veld.value = "";
+      veld.previousElementSibling.htmlFor = veld.id;
+    });
+    const naam = nieuw.querySelector("[data-muur-naam]");
+    naam.id = `muur${teller}-naam`;
+    nieuw.setAttribute("aria-labelledby", naam.id);
+    const weg = document.createElement("button");
+    weg.type = "button";
+    weg.className = "calc__weg";
+    weg.textContent = "Verwijder";
+    const nummer = () => {
+      muren.querySelectorAll("[data-muur]").forEach((muur, i) => {
+        muur.querySelector("[data-muur-naam]").textContent = `Muur ${i + 1}`;
+        muur.querySelector(".calc__weg")?.setAttribute("aria-label", `Verwijder muur ${i + 1}`);
+      });
+    };
+    weg.addEventListener("click", () => {
+      nieuw.remove();
+      nummer();
+      form.querySelector("[data-muur-erbij]").focus();
+      update();
+    });
+    naam.after(weg);
+    muren.append(nieuw);
+    nummer();
+    nieuw.querySelector("input").focus();
+    update();
+  });
+
   form.addEventListener("input", update);
+  form.addEventListener("change", update);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     update();
