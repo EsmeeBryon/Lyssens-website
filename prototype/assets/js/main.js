@@ -38,7 +38,7 @@ function initCalculator() {
     weet: { lagen: 2, zin: "wat meestal nodig is" },
     zelfde: { lagen: 1, zin: "wat bij dezelfde kleur vaak volstaat" },
     anders: { lagen: 2, zin: "zodat de oude kleur niet doorschijnt" },
-    nieuw: { lagen: 2, zin: "met eerst nog een grondlaag, want een kale muur zuigt de verf op" },
+    nieuw: { lagen: 2, zin: "met eerst nog een grondlaag, want een muur die nog nooit geschilderd is zuigt de verf op" },
   };
 
   const update = () => {
